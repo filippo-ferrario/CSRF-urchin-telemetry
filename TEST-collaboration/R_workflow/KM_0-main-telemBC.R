@@ -8,10 +8,10 @@
 # ===============================================================================
 
 # setwd to use my R version with all installed libraries and test running the script
-setwd("C:\\Users\\MACGREGORK\\Dropbox\\aaa_Articles_project_organization\\Urchin_telemetry_HR2_Quebec_Pacific_GitHub\\TEST-projects-1\\telemBC")
+# setwd("C:\\Users\\MACGREGORK\\Dropbox\\aaa_Articles_project_organization\\Urchin_telemetry_HR2_Quebec_Pacific_GitHub\\TEST-projects-1\\telemBC")
 
 # setwd to use once opening R within this folder is functional
-setwd('telemBC')
+setwd('TEST-collaboration')
 
 # run this section only the first time.
 # dir.create('R_output/dataset', showWarnings = TRUE, recursive = T)

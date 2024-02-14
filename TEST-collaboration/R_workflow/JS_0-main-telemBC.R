@@ -7,7 +7,7 @@
 # Aim    	: test collaborative strategy
 # ===============================================================================
 
-setwd('telemBC')
+setwd('TEST-collaboration')
 
 # run this section only the first time.
 dir.create('R_output/dataset', showWarnings = TRUE, recursive = T)
