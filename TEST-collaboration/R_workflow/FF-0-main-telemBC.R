@@ -45,4 +45,12 @@ library(ezknitr)
 # -----------------------------------
 # input: none
 ezspin(file='R_workflow/FF-example-parallel_processing.R', keep_md=FALSE,  out_dir='R_output/Rmarkdown')
-# input: /R_output/Rmarkdown/FF-example-parallel_processing.html
+# ouput: /R_output/Rmarkdown/FF-example-parallel_processing.html
+
+
+# create a test dataset
+# ----------------------
+# input: none
+source('R_workflow/create_test_dataset.R')
+rm(list=ls)
+# output: R_output/dataset/dummy_data.csv
