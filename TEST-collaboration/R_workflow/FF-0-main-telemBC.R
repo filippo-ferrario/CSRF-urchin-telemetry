@@ -52,5 +52,5 @@ ezspin(file='R_workflow/FF-example-parallel_processing.R', keep_md=FALSE,  out_d
 # ----------------------
 # input: none
 source('R_workflow/create_test_dataset.R')
-rm(list=ls)
+rm(list=ls())
 # output: R_output/dataset/dummy_data.csv
