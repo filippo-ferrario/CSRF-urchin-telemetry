@@ -9,7 +9,7 @@
 
 
 # setwd to use once opening R within this folder is functional
-setwd('TEST-collaboration')
+setwd('/Users/pcovert_work/Documents/GitHub/TEST-projects-2/TEST-collaboration')
 
 # run this section only the first time.
 # dir.create('R_output/dataset', showWarnings = TRUE, recursive = T)
