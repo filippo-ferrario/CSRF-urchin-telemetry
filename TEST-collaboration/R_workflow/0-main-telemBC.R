@@ -45,4 +45,4 @@ library(ezknitr)
 # -----------------------------------
 # input: none
 ezspin(file='R_workflow/example-parallel_processing.R', keep_md=FALSE,  out_dir='R_output/Rmarkdown')
-# input: /R_output/Rmarkdown/example-parallel_processing.html
+# output: /R_output/Rmarkdown/example-parallel_processing.html
