@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Parallel processing example</title>
+<style type="text/css">
+/**
+ * Prism.s theme ported from highlight.js's xcode style
+ */
+pre code {
+  padding: 1em;
+}
+.token.comment {
+  color: #007400;
+}
+.token.punctuation {
+  color: #999;
+}
+.token.tag,
+.token.selector {
+  color: #aa0d91;
+}
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #1c00cf;
+}
+.token.property,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  color: #c41a16;
+}
+.token.inserted {
+  background-color: #ccffd8;
+}
+.token.deleted {
+  background-color: #ffebe9;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #836c28;
+}
+.token.function,
+.token.class-name {
+  color: #DD4A68;
+}
+.token.regex,
+.token.important,
+.token.variable {
+  color: #5c2699;
+}
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+</style>
+<style type="text/css">
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+body, .footnotes, code { font-size: .9em; }
+li li { font-size: .95em; }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+pre, img { max-width: 100%; }
+pre, pre:hover {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+pre code {
+  display: block;
+  overflow-x: auto;
+}
+code { font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace; }
+:not(pre) > code, code[class] { background-color: #F8F8F8; }
+code.language-undefined, pre > code:not([class]) {
+  background-color: inherit;
+  border: 1px solid #eee;
+}
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+blockquote {
+  color: #666;
+  margin: 0;
+  padding-left: 1em;
+  border-left: 0.5em solid #eee;
+}
+hr, .footnotes::before { border: 1px dashed #ddd; }
+.frontmatter { text-align: center; }
+#TOC .numbered li { list-style: none; }
+#TOC .numbered { padding-left: 0; }
+#TOC .numbered ul { padding-left: 1em; }
+table, .body h2 { border-bottom: 1px solid #666; }
+.body .appendix, .appendix ~ h2 { border-bottom-style: dashed; }
+.footnote-ref a::before { content: "["; }
+.footnote-ref a::after { content: "]"; }
+section.footnotes::before {
+  content: "";
+  display: block;
+  max-width: 20em;
+}
+
+@media print {
+  body {
+    font-size: 12pt;
+    max-width: 100%;
+  }
+  tr, img { page-break-inside: avoid; }
+}
+@media only screen and (min-width: 992px) {
+  pre { white-space: pre; }
+}
+</style>
+</head>
+<body>
+<div class="frontmatter">
+<div class="title"><h1>Parallel processing example</h1></div>
+<div class="author"><h2></h2></div>
+<div class="date"><h3></h3></div>
+</div>
+<div class="body">
+<pre><code class="language-r"># ===============================================================================
+# Name   	: Parallel processing example
+# Author 	: Filippo Ferrario 
+# Date   	:  [dd-mm-yyyy] 31-01-2024
+# Version	: 0.1
+# URL		: 
+# Aim    	: Provide an example on how to use parallel processing in R
+# ===============================================================================
+</code></pre>
+<p>run on the Thu Feb 22 13:19:35 2024</p>
+<h1 id="parallel-processing-example">Parallel processing example</h1>
+<p>This script is an example on how to use parallel processing in R.<br />
+Parallel processing is usefull to speed up calculations taking advantage of more than 1 core, if these are available on your pc.</p>
+<h2 id="create-a-dummy-dataset">Create a dummy dataset</h2>
+<h1 id="section_1">—————————–</h1>
+<pre><code class="language-r"># create a dataset
+
+my_data&lt;- data.frame('site'=c(rep(paste0('site_0',1:9),each=100),rep('site_10',100)) , x=rnorm(1000))
+
+my_data$site&lt;-as.factor(my_data$site)
+
+summary(my_data)
+</code></pre>
+<pre><code>##       site           x           
+##  site_01:100   Min.   :-3.47190  
+##  site_02:100   1st Qu.:-0.65037  
+##  site_03:100   Median : 0.02360  
+##  site_04:100   Mean   : 0.02413  
+##  site_05:100   3rd Qu.: 0.66553  
+##  site_06:100   Max.   : 3.22015  
+##  (Other):400
+</code></pre>
+<pre><code class="language-r">my_data %&gt;%
+	group_by(site) %&gt;%
+	summarize(n_obs=n())
+</code></pre>
+<pre><code>## # A tibble: 10 × 2
+##    site    n_obs
+##    &lt;fct&gt;   &lt;int&gt;
+##  1 site_01   100
+##  2 site_02   100
+##  3 site_03   100
+##  4 site_04   100
+##  5 site_05   100
+##  6 site_06   100
+##  7 site_07   100
+##  8 site_08   100
+##  9 site_09   100
+## 10 site_10   100
+</code></pre>
+<p><code>my_data</code> is a dataset that has 10 sites and for each site there are 100 measured values of the <code>x</code> variable.</p>
+<p>The task we want to do is to take a mean of the <em>x</em> variable for each site. We will do it using a <code>for</code> loop (instead of using the more proper <code>mean</code> function with <code>tapply</code>) just to later show the parallelization approach.</p>
+<p>A bit of terminology first. When using a <code>for</code> loop (or some other type of iterative operation), usually <em>R</em> cycle through each element of an object (e.g., a vector, a data.frame, or a list) and perfom some kind of task. This is usually done using a single ‘core’ (i.e., a ‘computing unit’ in your pc).<br />
+This way of functioning is called ‘serial’ because each iteration is carried out one after the other.<br />
+If we could used more than one core at the same time (provided that our pc has multiple cores, as usually is the case), then we could tell R to split the iterations of our <code>for loop</code> among <em>n</em> cores so that at a given time <em>n</em> iterations will be processed instead of just one.<br />
+By doing this we could save time if the time required to perform a single iteration is considerably long.</p>
+<h2 id="serial-example">Serial example</h2>
+<h1 id="section_2">––––––––––</h1>
+<p>We will first produce a job that will run in a serial way, i.e., using just one core.</p>
+<pre><code class="language-r"># initialize the output object. This will be a list for the sake of comaprison with the parallel approach. 
+my_means&lt;- list()
+
+# get the names of the sites
+sites&lt;-unique(my_data$site)
+sites&lt;-as.character(sites)
+
+for (i in seq_along(sites)){
+	# subset the dataframe to just get the data for a single site
+	tmp&lt;-filter(my_data, site==sites[i])
+	# calculate the mean of x and store it in a dataframe with a column site and one for the mean_x
+	res&lt;-data.frame(site=sites[i], mean_x= mean(tmp$x))
+	# store this dataframe in the i element of our output list
+	my_means[[i]]&lt;-res
+}
+</code></pre>
+<p>Our output is</p>
+<pre><code class="language-r">my_means
+</code></pre>
+<pre><code>## [[1]]
+##      site     mean_x
+## 1 site_01 0.07765759
+## 
+## [[2]]
+##      site    mean_x
+## 1 site_02 0.2103497
+## 
+## [[3]]
+##      site     mean_x
+## 1 site_03 0.01983048
+## 
+## [[4]]
+##      site       mean_x
+## 1 site_04 -0.004403973
+## 
+## [[5]]
+##      site    mean_x
+## 1 site_05 -0.204304
+## 
+## [[6]]
+##      site     mean_x
+## 1 site_06 0.07747789
+## 
+## [[7]]
+##      site     mean_x
+## 1 site_07 0.04297143
+## 
+## [[8]]
+##      site       mean_x
+## 1 site_08 -0.008627319
+## 
+## [[9]]
+##      site    mean_x
+## 1 site_09 0.1162676
+## 
+## [[10]]
+##      site      mean_x
+## 1 site_10 -0.08594368
+</code></pre>
+<p>We can now convert this list into a dataframe by doing</p>
+<pre><code class="language-r">my_means_df&lt;- bind_rows(my_means)
+my_means_df
+</code></pre>
+<pre><code>##       site       mean_x
+## 1  site_01  0.077657595
+## 2  site_02  0.210349680
+## 3  site_03  0.019830479
+## 4  site_04 -0.004403973
+## 5  site_05 -0.204304049
+## 6  site_06  0.077477891
+## 7  site_07  0.042971425
+## 8  site_08 -0.008627319
+## 9  site_09  0.116267627
+## 10 site_10 -0.085943681
+</code></pre>
+<h2 id="parallel-example">Parallel example</h2>
+<h1 id="section_3">––––––––––</h1>
+<p>To use more cores we need to:</p>
+<ul>
+<li>prepare the data in a format that makes it possible to send chunks of them to different cores (each core will then process only the chunk of data it was provided with)</li>
+<li>know how many cores we have and decide how many to use</li>
+<li>Creating a <em>cluster</em> with the <em>n</em> cores we want to use.</li>
+<li>‘Activate’ the cluster by <em>registering</em> it.</li>
+<li>send the different data chuncks to the different cores and perform the task.</li>
+<li>collect the output and close the cluster.</li>
+</ul>
+<p>Check how many cores we have.</p>
+<pre><code class="language-r">cores_avail&lt;-detectCores()
+</code></pre>
+<p>Since we have 16 core and 10, we cannot process all the sites at the same time.<br />
+The best will be to just use 5 cores and do 2 iterations: in the first iteration the first 5 sites will be processed, and the other 5 in the second iteration.</p>
+<p>Lets first prep the data in the good format, that is we will split the dataset into a list in which each element will contain data of one particular site.</p>
+<pre><code class="language-r">df_list&lt;-split(my_data, f=my_data$site)
+str(df_list)
+</code></pre>
+<pre><code>## List of 10
+##  $ site_01:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##   ..$ x   : num [1:100] 1.743 -0.437 -0.385 0.401 0.209 ...
+##  $ site_02:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..$ x   : num [1:100] 1.236 -0.158 -0.629 1.493 1.133 ...
+##  $ site_03:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##   ..$ x   : num [1:100] -0.0315 -0.471 0.4346 1.1281 -1.6067 ...
+##  $ site_04:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 4 4 4 4 4 4 4 4 4 4 ...
+##   ..$ x   : num [1:100] 0.452 -1.049 -1.762 1.22 -1.055 ...
+##  $ site_05:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 5 5 5 5 5 5 5 5 5 5 ...
+##   ..$ x   : num [1:100] -0.463 0.147 -1.649 -0.414 -1.162 ...
+##  $ site_06:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 6 6 6 6 6 6 6 6 6 6 ...
+##   ..$ x   : num [1:100] 0.0212 -1.2283 1.351 -0.7902 0.9909 ...
+##  $ site_07:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 7 7 7 7 7 7 7 7 7 7 ...
+##   ..$ x   : num [1:100] -0.0858 0.9105 -0.2255 0.6297 -0.5077 ...
+##  $ site_08:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 8 8 8 8 8 8 8 8 8 8 ...
+##   ..$ x   : num [1:100] 0.559 -0.751 0.133 -1.576 -0.647 ...
+##  $ site_09:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 9 9 9 9 9 9 9 9 9 9 ...
+##   ..$ x   : num [1:100] 1.464 1.94 -0.973 2.171 -0.308 ...
+##  $ site_10:'data.frame':	100 obs. of  2 variables:
+##   ..$ site: Factor w/ 10 levels &quot;site_01&quot;,&quot;site_02&quot;,..: 10 10 10 10 10 10 10 10 10 10 ...
+##   ..$ x   : num [1:100] 1.215 0.868 -1.062 -0.692 -0.31 ...
+</code></pre>
+<pre><code class="language-r"># create a cluster with 5 cores
+cl = makeCluster(5, type = &quot;PSOCK&quot;) 
+cl
+</code></pre>
+<pre><code>## groupe de processus socket avec 5 noeuds sur l'hôte 'localhost'
+</code></pre>
+<pre><code class="language-r"># register the cluster
+registerDoParallel(cl)
+</code></pre>
+<p>using the <code>foreach</code> function from the package <code>foreach</code> we can run the parallel process. Also, the output of the function will be a list whose element will store the output of each core. So, we just need to save this in an object to ‘collect’ the output.<br />
+The <code>foreach</code> function is actually really similar to a <em>for loop</em> in its syntax. This makes it easier to adapt our loops to parallel processing. In the <code>for</code> loop we need to define a counter (usually <em>i</em>), in <code>foreach</code> we need to do the same.</p>
+<pre><code class="language-r">my_means_par&lt;-foreach(i= seq_along(sites), .inorder=FALSE)  %dopar% {
+	# pick the i element of out dataframe list.
+	tmp&lt;-df_list[[i]]
+	# calculate the mean of x and store it in a dataframe with a column site and one for the mean_x
+	res&lt;-data.frame(site=sites[i], mean_x= mean(tmp$x))
+	res
+	# we don't need to manually store the res object in an output list: the function does it for us.
+	}
+
+# close the cluster
+stopCluster(cl)
+</code></pre>
+<p>Our output is</p>
+<pre><code class="language-r">my_means_par
+</code></pre>
+<pre><code>## [[1]]
+##      site     mean_x
+## 1 site_01 0.07765759
+## 
+## [[2]]
+##      site    mean_x
+## 1 site_02 0.2103497
+## 
+## [[3]]
+##      site     mean_x
+## 1 site_03 0.01983048
+## 
+## [[4]]
+##      site       mean_x
+## 1 site_04 -0.004403973
+## 
+## [[5]]
+##      site    mean_x
+## 1 site_05 -0.204304
+## 
+## [[6]]
+##      site     mean_x
+## 1 site_06 0.07747789
+## 
+## [[7]]
+##      site     mean_x
+## 1 site_07 0.04297143
+## 
+## [[8]]
+##      site       mean_x
+## 1 site_08 -0.008627319
+## 
+## [[9]]
+##      site    mean_x
+## 1 site_09 0.1162676
+## 
+## [[10]]
+##      site      mean_x
+## 1 site_10 -0.08594368
+</code></pre>
+<p>We can now convert this list into a dataframe by doing</p>
+<pre><code class="language-r">my_means_par_df&lt;- bind_rows(my_means_par)
+my_means_par_df
+</code></pre>
+<pre><code>##       site       mean_x
+## 1  site_01  0.077657595
+## 2  site_02  0.210349680
+## 3  site_03  0.019830479
+## 4  site_04 -0.004403973
+## 5  site_05 -0.204304049
+## 6  site_06  0.077477891
+## 7  site_07  0.042971425
+## 8  site_08 -0.008627319
+## 9  site_09  0.116267627
+## 10 site_10 -0.085943681
+</code></pre>
+<pre><code class="language-r"># check that the serial and parallel outputs are the same
+all.equal(my_means_df,my_means_par_df) 
+</code></pre>
+<pre><code>## [1] TRUE
+</code></pre>
+<p>Done!</p>
+<p><em>A small warning</em>: In this particular case we have very a simple task and the serial process is actually more time efficient than the parallel one. This is because the parallel process has some ‘overhead’ cost associated to it: it takes some time to set up and register the cluster and also to communicate to the different cores. But if the processing is really long, then this price could be minimal compare to the advantage.<br />
+You can find more info on parallel processing here:</p>
+<ul>
+<li><a href="https://www.r-bloggers.com/2014/07/implementing-mclapply-on-windows-a-primer-on-embarrassingly-parallel-computation-on-multicore-systems-with-r/">https://www.r-bloggers.com/2014/07/implementing-mclapply-on-windows-a-primer-on-embarrassingly-parallel-computation-on-multicore-systems-with-r/</a></li>
+<li><a href="https://psu-psychology.github.io/r-bootcamp-2018/talks/parallel_r.html">https://psu-psychology.github.io/r-bootcamp-2018/talks/parallel_r.html</a>
+Info on my Session (R and package versions )</li>
+</ul>
+<pre><code class="language-r">sessionInfo()
+</code></pre>
+<pre><code>## R version 4.3.2 (2023-10-31 ucrt)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 11 x64 (build 22621)
+## 
+## Matrix products: default
+## 
+## 
+## locale:
+## [1] LC_COLLATE=French_France.utf8  LC_CTYPE=French_France.utf8    LC_MONETARY=French_France.utf8
+## [4] LC_NUMERIC=C                   LC_TIME=French_France.utf8    
+## 
+## time zone: America/New_York
+## tzcode source: internal
+## 
+## attached base packages:
+## [1] parallel  stats     graphics  grDevices datasets  utils     methods   base     
+## 
+## other attached packages:
+##  [1] shaRe_0.2         ezknitr_0.6.3     doParallel_1.0.17 iterators_1.0.14  foreach_1.5.2    
+##  [6] lubridate_1.9.3   forcats_1.0.0     stringr_1.5.1     dplyr_1.1.4       purrr_1.0.2      
+## [11] readr_2.1.5       tidyr_1.3.1       tibble_3.2.1      ggplot2_3.4.4     tidyverse_2.0.0  
+## 
+## loaded via a namespace (and not attached):
+##  [1] gtable_0.3.4      compiler_4.3.2    renv_1.0.3        tidyselect_1.2.0  scales_1.3.0     
+##  [6] R6_2.5.1          generics_0.1.3    knitr_1.45        munsell_0.5.0     pillar_1.9.0     
+## [11] tzdb_0.4.0        R.utils_2.12.3    rlang_1.1.3       utf8_1.2.4        stringi_1.8.3    
+## [16] xfun_0.42         timechange_0.3.0  cli_3.6.2         withr_3.0.0       magrittr_2.0.3   
+## [21] grid_4.3.2        rstudioapi_0.15.0 hms_1.1.3         lifecycle_1.0.4   R.oo_1.26.0      
+## [26] R.methodsS3_1.8.2 vctrs_0.6.5       evaluate_0.23     glue_1.7.0        codetools_0.2-19 
+## [31] fansi_1.0.6       colorspace_2.1-0  tools_4.3.2       pkgconfig_2.0.3
+</code></pre>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+</body>
+</html>
