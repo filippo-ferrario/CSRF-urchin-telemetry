@@ -7,7 +7,7 @@
 # Aim    	: 
 # ===============================================================================
 
-setwd('TEST-collaboration')
+setwd('preprocessing-telemetry_filtering')
 
 # run this section only the first time.
 dir.create('R_output/dataset', showWarnings = TRUE, recursive = T)
