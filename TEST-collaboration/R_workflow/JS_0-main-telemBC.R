@@ -3,7 +3,7 @@
 # Author 	: FF
 # Date   	:  [dd-mm-yyyy] 26-01-2024
 # Version	: 1
-# URL		: 
+# URL		:
 # Aim    	: test collaborative strategy
 # ===============================================================================
 
@@ -14,7 +14,7 @@ dir.create('R_output/dataset', showWarnings = TRUE, recursive = T)
 dir.create('R_output/images', showWarnings = TRUE, recursive = T)
 dir.create('R_output/Rmarkdown', showWarnings = TRUE, recursive = T)
 dir.create('R_output/spatial', showWarnings = TRUE, recursive = T)
- 
+
 
 
 # ================================================
@@ -44,5 +44,5 @@ library(ezknitr)
 # example on how parallize you code
 # -----------------------------------
 # input: none
-ezspin(file='R_workflow/JS-example-parallel_processing.R', keep_md=FALSE,  out_dir='R_output/Rmarkdown')
+ezspin(file='R_workflow/JS_example-parallel_processing.R', keep_md=FALSE,  out_dir='R_output/Rmarkdown')
 # input: /R_output/Rmarkdown/example-parallel_processing.html
