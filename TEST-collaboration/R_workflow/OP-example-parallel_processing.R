@@ -1,6 +1,6 @@
 # ===============================================================================
 # Name   	: Parallel processing example
-# Author 	: Filippo Ferrario
+# Author 	: Filippo Ferrario - copy created by Ondine Pontier
 # Date   	:  [dd-mm-yyyy] 31-01-2024
 # Version	: 0.1
 # URL		:
