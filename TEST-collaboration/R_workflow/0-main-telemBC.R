@@ -49,7 +49,8 @@ library(ezknitr)
 source("./TEST-collaboration/R_workflow/JS_funcprint.R")
 print(JS_funcprint(1))
 
-
+source("./TEST-collaboration/R_workflow/FF_funcprint.R")
+print(FF_funcprint(5))
 
 
 # ==================================
@@ -63,3 +64,6 @@ print(JS_funcprint(1))
 
 source("./TEST-collaboration/R_workflow/KM_funcprint.R")
 print(KM_funcprint(c(1,2, 6, 11)))
+
+
+
