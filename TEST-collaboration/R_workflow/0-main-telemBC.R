@@ -49,3 +49,13 @@ ezspin(file='R_workflow/example-parallel_processing.R', keep_md=FALSE,  out_dir=
 
 source("./TEST-collaboration/R_workflow/JS_funcprint.R")
 print(JS_funcprint(1))
+
+
+
+# ==================================
+# Test Branch Marie-France Lavoie
+# ==================================
+
+source("./TEST-collaboration/R_workflow/MFL_funcprint.R")
+print(MFL_funcprint(1))
+
