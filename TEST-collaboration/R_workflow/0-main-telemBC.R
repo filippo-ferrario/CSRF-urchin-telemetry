@@ -49,3 +49,6 @@ ezspin(file='R_workflow/example-parallel_processing.R', keep_md=FALSE,  out_dir=
 
 source("./TEST-collaboration/R_workflow/JS_funcprint.R")
 print(JS_funcprint(1))
+
+source("./TEST-collaboration/R_workflow/FF_funcprint.R")
+print(FF_funcprint(5))
