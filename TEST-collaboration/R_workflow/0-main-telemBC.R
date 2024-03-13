@@ -49,6 +49,12 @@ library(ezknitr)
 source("./TEST-collaboration/R_workflow/JS_funcprint.R")
 print(JS_funcprint(1))
 
+
+
+
+
+
+# =======
 source("./TEST-collaboration/R_workflow/FF_funcprint.R")
 print(FF_funcprint(5))
 
@@ -65,5 +71,13 @@ print(FF_funcprint(5))
 source("./TEST-collaboration/R_workflow/KM_funcprint.R")
 print(KM_funcprint(c(1,2, 6, 11)))
 
+
+
+# ==================================
+# Test Branch Marie-France Lavoie
+# ==================================
+
+source("./TEST-collaboration/R_workflow/MFL_funcprint.R")
+print(MFL_funcprint(1))
 
 
