@@ -44,11 +44,32 @@ library(ezknitr)
 # example on how parallize you code
 # -----------------------------------
 # input: none
-ezspin(file='R_workflow/example-parallel_processing.R', keep_md=FALSE,  out_dir='R_output/Rmarkdown')
-# output: /R_output/Rmarkdown/example-parallel_processing.html
+# output: none
 
 source("./TEST-collaboration/R_workflow/JS_funcprint.R")
 print(JS_funcprint(1))
+
+
+
+
+
+
+# =======
+source("./TEST-collaboration/R_workflow/FF_funcprint.R")
+print(FF_funcprint(5))
+
+
+# ==================================
+# Test a branching example - Katie
+# ==================================
+
+# Jillian's number printing function
+# -----------------------------------
+# input: none
+# output: none
+
+source("./TEST-collaboration/R_workflow/KM_funcprint.R")
+print(KM_funcprint(c(1,2, 6, 11)))
 
 
 
@@ -58,4 +79,5 @@ print(JS_funcprint(1))
 
 source("./TEST-collaboration/R_workflow/MFL_funcprint.R")
 print(MFL_funcprint(1))
+
 
