@@ -81,8 +81,18 @@ source("./TEST-collaboration/R_workflow/MFL_funcprint.R")
 print(MFL_funcprint(1))
 
 # ==================================
+# Test Branch Laelien Bassi
+# ==================================
+
+source("./TEST-collaboration/R_workflow/LB_funcprint.R")
+print(LB_funcprint(1))
+
+
+
+# =======
 # Test Branch  FF2 
 # ==================================
+
 
 source("./TEST-collaboration/R_workflow/FF2_funcprint.R")
 print(MFL_funcprint(10))
