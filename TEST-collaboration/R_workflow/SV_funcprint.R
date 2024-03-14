@@ -23,9 +23,9 @@ dir.create('R_output/spatial', showWarnings = TRUE, recursive = T)
 library(shaRe) # get it from devtools::install_github('filippo-ferrario/shaRe', ref='HEAD')
 
 checkNinst(c('tidyverse',
-'foreach',
-'doParallel',
-'ezknitr'), inst=F)
+             'foreach',
+             'doParallel',
+             'ezknitr'), inst=F)
 
 
 # ======================
@@ -80,30 +80,9 @@ print(KM_funcprint(c(1,2, 6, 11)))
 source("./TEST-collaboration/R_workflow/MFL_funcprint.R")
 print(MFL_funcprint(1))
 
-# ==================================
-# Test Branch Laelien Bassi
-# ==================================
+##==============
+#Test branch Sandra
+#=================
 
-source("./TEST-collaboration/R_workflow/LB_funcprint.R")
-print(LB_funcprint(1))
-
-
-
-# =======
-# Test Branch  FF2 
-# ==================================
-
-source("./TEST-collaboration/R_workflow/FF2_funcprint.R")
-print(MFL_funcprint(10))
-
-
-#=========
-#sandra
-#=========
-source("./TEST-collaboration/R_workflow/SV_funcprint.R")
-print(SV_funcprint(1,2,3,4))
-
-
-
-
-
+source("./TEST-collaboration/R_workflow/MFL_funcprint.R")
+print(SV_funcprint(1,2,3,4,5))
