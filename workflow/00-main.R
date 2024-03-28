@@ -113,11 +113,11 @@ dir.create('data/raw_data_downloads_quadra_2023/vps_results_quadra_2023/marina2/
 # =======================================
 
 # run this section only the first time.
-dir.create('R_output/datasets', showWarnings = TRUE, recursive = T) # This folder is to store datasets and their metadata,
-dir.create('R_output/plots', showWarnings = TRUE, recursive = T) # This folder is to store plots from analysis 
-dir.create('R_output/Rmarkdown', showWarnings = TRUE, recursive = T) # This folder is to store Markdowns and htmls
-dir.create('R_output/raster_vector_data', showWarnings = TRUE, recursive = T) # This folder is to store spatial data and their metadata in formats like:
-dir.create('R_output/R_objects', showWarnings = TRUE, recursive = T) # This folder is to store the R objects and their metadata.
+dir.create('output/datasets', showWarnings = TRUE, recursive = T) # This folder is to store datasets and their metadata,
+dir.create('output/plots', showWarnings = TRUE, recursive = T) # This folder is to store plots from analysis 
+dir.create('output/Rmarkdown', showWarnings = TRUE, recursive = T) # This folder is to store Markdowns and htmls
+dir.create('output/raster_vector_data', showWarnings = TRUE, recursive = T) # This folder is to store spatial data and their metadata in formats like:
+dir.create('output/R_objects', showWarnings = TRUE, recursive = T) # This folder is to store the R objects and their metadata.
  
 
 
