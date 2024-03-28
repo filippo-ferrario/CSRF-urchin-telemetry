@@ -1,1 +1,0 @@
-This folder is to store Markdowns and htmls
