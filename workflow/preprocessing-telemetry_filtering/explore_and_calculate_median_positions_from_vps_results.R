@@ -183,21 +183,19 @@ sync_data3_utm_sf <- st_as_sf(sync_data3_utm)
 # =====================
 # Plot sync detections 
 # =====================
-bbox = my_bbox
-#' panelled by period 
+
 #' Plot sync detections and median positions + labels
 t1 = tm_shape(sync_data3_utm_sf) +
   tm_grid(col = "lightgrey") +
   tm_dots() +
   tm_compass(position = c("right", "top")) +
-  tm_scale_bar(position = c("left", "bottom"), breaks = c(0, 0.01, 0.02, 0.03, 0.04, 0.05)) +
+  tm_scalebar(position = c("left", "bottom"), breaks = c(0, 0.01, 0.02, 0.03, 0.04, 0.05)) +
   tm_shape(stn_med2_utm_sf) +
   tm_dots(col = "red") +
-  # tm_text("stn_name") +
-  tm_text("stn", auto.placement = TRUE) +
+  tm_text("stn") +
   tm_style("white")
 
-# t1
+t1
 
 tmap_save(t1, file = "./output/plots/sync_detections.png")
 
