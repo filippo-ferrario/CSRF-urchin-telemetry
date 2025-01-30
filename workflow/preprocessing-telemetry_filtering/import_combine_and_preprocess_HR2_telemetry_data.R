@@ -126,18 +126,6 @@ animal_pil <-  animal_pil |>
 
 
 
-
-
-# =====================
-# Combine urchin metadata file with detection data and filter by start and end date-times
-# =====================
-all_sync6 = all_sync5 |>  
-  mutate(t = ymd_hms(t)) |>  
-  left_join(meta_stations01, by = "tag_id") |>  
-  mutate(period = "July-Oct")
-
-
-
 # Combine multiple sites together - not yet implemented
 animal_data <- bind_rows(animal_pil)
 
