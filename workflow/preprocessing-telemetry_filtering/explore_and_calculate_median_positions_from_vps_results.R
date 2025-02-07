@@ -269,9 +269,15 @@ names(diff_rece_vps1)[1] <- "Diff_receivers_vps"
 diff <- cbind(diff_rece1, diff_vps1, diff_rece_vps1)
 diff
 
-# Add a Station column
+# Add a Region, Year, Site, and Station column
+Region <- data.frame(matrix("QC", nrow = 11, ncol = 1))
+names(Region)[1] <- "Region"
+Year <- data.frame(matrix(2022, nrow = 11, ncol = 1))
+names(Year)[1] <- "Year"
+Site <- data.frame(matrix("Pilotes", nrow = 11, ncol = 1))
+names(Site)[1] <- "Site"
 stn <- data.frame("stn" = c("Ref01", "Ref02", "St01", "St02", "St03", "St04", "St05", "St06", "St07", "St08", "St09"))
-diff1 <- cbind(stn, diff)
+diff1 <- cbind(Region, Year, Site, stn, diff)
 diff1
 
 
