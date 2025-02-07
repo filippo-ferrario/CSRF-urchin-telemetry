@@ -135,16 +135,23 @@ ezspin(file = './workflow/preprocessing-telemetry_filtering/import_combine_and_p
 # Explore and calculate median gps positions from vps data
 # ---------------------------------------------
 # input: ./output/datasets/combined_sync_and_ref_data.csv
+# input: ./output/datasets/receivers_metadata_QC_BC.csv
+# input: ./output/datasets/VPS_receivers_metadata_QC_BC.csv
 # input: ./data/site_polygon.gpkg
+
 source('./workflow/explore_and_calculate_median_positions_from_vps_results.R'); rm(list=ls())
+
 # output: ./output/plots/sync_tag_detections_HPE2.png
 # output: ./output/plots/all_detections_HPE2.png
 # output: ./output/plots/all_detections_RMSE2.png
 # output: ./output/datasets/median_positions.csv
 # output: ./output/plots/pos_summary_positions.png
 # output: ./output/plots/sync_tag_detections_HPE2_with_median_and_gps.png
+# output: ./output/plots/sync_detections_PIL_receivers.png
+# output: ./output/plots/Density_plot_PIL.png
+# output: ./output/plots/Density_plot_PIL_median.png
 # output: ./output/datasets/median_positions_utm_sf.csv
-
+# output: ./output/datasets/distance_receivers_median.csv
 
 # Render as html file
 ezspin(file = './workflow/explore_and_calculate_median_positions_from_vps_results.R', keep_md = FALSE,  out_dir = './output/Rmarkdown', keep_rmd=TRUE)
