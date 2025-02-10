@@ -7,7 +7,7 @@
 # Aim    	: 
 # ===============================================================================
 
-# R version used in 4.3.2 with Rtools43
+# R version used is 4.3.2 with Rtools43
 
 renv::init()
 
