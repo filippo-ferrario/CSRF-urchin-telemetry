@@ -58,7 +58,7 @@ source('./workflow/preprocessing-telemetry_filtering/00_colourPalettes.R')
 
 
 # =========================
-# Import and combine receivers metadata
+# Import and clean receivers and urchins metadata
 # =========================
 
 # Import and explore dataset
@@ -67,14 +67,17 @@ source('./workflow/preprocessing-telemetry_filtering/00_colourPalettes.R')
 # input: ./data/metadata_receivers_BC2023.csv
 # input: ./data/Vps_metadata_VEMCO_QC2022.csv
 # input: ./data/Vps_metadata_VEMCO_BC2023.csv
+# input: ./data/metadata_urchins_QC2022.csv
+# input: ./data/metadata_urchins_BC2023.csv
 
-source('./workflow/import_and_combine_receivers_metadata.R'); rm(list=ls())
+source('./workflow/import_and_clean_receivers_and_urchins_metadata.R'); rm(list=ls())
 
-# output: ./output/datasets/receivers_metadata_QC_BC.csv
-# output: ./output/datasets/VPS_receivers_metadata_QC_BC.csv
+# output: ./output/datasets/combined_receivers_metadata_QC_BC.csv
+# output: ./output/datasets/combined_VPS_receivers_metadata_QC_BC.csv
+# output: ./output/datasets/combined_urchin_metadata_QC_BC.csv
 
 # Render as html file
-ezspin(file = './workflow/import_and_combine_receivers_metadata.R', keep_md = FALSE,  out_dir = './R_output/Rmarkdown', keep_rmd=TRUE)
+ezspin(file = './workflow/import_and_clean_receivers_and_urchins_metadata.R', keep_md = FALSE,  out_dir = './R_output/Rmarkdown', keep_rmd=TRUE)
 
 
 
