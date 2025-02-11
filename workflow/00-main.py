@@ -14,7 +14,6 @@
   Envision that this directory will contain the main scripts that control the
   ADCP processing sequence.  This includes:
     * creation of necessary directory structure;
-    * pre-processing of ADCP data;
     * processing of ADCP data;
     * creation of descriptive plots.
     
