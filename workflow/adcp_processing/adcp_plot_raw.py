@@ -4,9 +4,9 @@
   Name   	: ADCP plot raw
   Author 	: Paul Covert
   Date   	: 2025-02-11
-  Version	: 1.0.5
+  Version	: 1.1.0
   URL		: 
-  Aim    	: Plot processed position andvelocity data from ADCP.  To be used
+  Aim    	: Plot processed position and velocity data from ADCP.  To be used
               as a preliminary check of data quality, continuity, etc.
   ===============================================================================
 """
