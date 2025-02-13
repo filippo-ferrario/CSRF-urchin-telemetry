@@ -81,6 +81,8 @@ ALL_ADCP = [
     QUADRA_MARINA_1_ADCP,
     QUADRA_MARINA_2_ADCP,
 ]
+
+# Define TCM data paths
 BIC_ANSE_DES_PILOTES_TCM = Path(
     BIC, "sensors_anse_des_pilotes", "TCM", "2206004_Bic1_(0)_Current.csv"
 )
