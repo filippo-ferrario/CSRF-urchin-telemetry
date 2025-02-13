@@ -32,6 +32,7 @@
 """
 
 from pathlib import Path
+import pandas as pd
 import xarray as xr
 import matplotlib.pyplot as plt
 import adcp_processing as adcp
@@ -118,9 +119,10 @@ ALL_TCM = [
     QUADRA_MARINA_2_TCM,
 ]
 
+
 print("Creating descriptive plots of ADCP data...", flush=True)
-for p in ALL_ADCP:
-    ds = xr.open_dataset(p)
+for adcp_filepath in ALL_ADCP:
+    ds = xr.open_dataset(adcp_filepath)
     print("  {}".format(ds.attrs["platform"]))
 
     # calculations: horizontal velocity
@@ -142,7 +144,9 @@ print("done.")
 
 
 print("Comparing ADCP and TCM current measurements...", flush=True)
-for p1, p2 in zip(ALL_ADCP, ALL_TCM):
+for adcp_filepath, tcm_filepath in zip(ALL_ADCP[0:4], ALL_TCM[0:4]):
+    ds = xr.open_dataset(adcp_filepath)
+    df = pd.read_csv(tcm_filepath)
     pass
 
 print("done.")
