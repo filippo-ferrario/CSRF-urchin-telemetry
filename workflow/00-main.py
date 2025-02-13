@@ -93,7 +93,28 @@ CACOUNA_ILE_AUX_LIEVRES_1_TCM = Path(
 CACOUNA_ILE_AUX_LIEVRES_2_TCM = Path(
     CACOUNA, "sensors_northeast", "TCM", "2206003_IleauxLievres2_(0)_Current.csv"
 )
-
+RUPERT_TUGWELL_1_TCM = Path(
+    RUPERT, "sensors_tugwell1", "TCM", ""
+)
+RUPERT_TUGWELL_2_TCM = Path(
+    RUPERT, "sensors_tugwell2", "TCM", ""
+)
+QUADRA_MARINA_1_TCM = Path(
+    QUADRA, "sensors_marina1", "TCM", ""
+)
+QUADRA_MARINA_2_TCM = Path(
+    QUADRA, "sensors_marina2", "TCM", ""
+)
+ALL_TCM = [
+    BIC_ANSE_DES_PILOTES_TCM,
+    BIC_LA_BALEINE_TCM,
+    CACOUNA_ILE_AUX_LIEVRES_1_TCM,
+    CACOUNA_ILE_AUX_LIEVRES_2_TCM,
+    RUPERT_TUGWELL_1_TCM,
+    RUPERT_TUGWELL_2_TCM,
+    QUADRA_MARINA_1_TCM,
+    QUADRA_MARINA_2_TCM,
+]
 
 print("Creating descriptive plots of ADCP data...", flush=True)
 for p in ALL_ADCP:
