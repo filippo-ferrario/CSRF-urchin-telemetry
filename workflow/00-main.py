@@ -37,62 +37,49 @@ import matplotlib.pyplot as plt
 import adcp_processing as adcp
 
 
-# Define a bunch of path constants.
-BIC_RAW = Path("../data/raw_data_downloads_bic_2022")
-CACOUNA_RAW = Path("../data/raw_data_downloads_cacouna_2022")
-RUPERT_RAW = Path("../data/raw_data_downloads_prince_rupert_2023")
-QUADRA_RAW = Path("../data/raw_data_downloads_quadra_2023")
-BIC_ANSE_DES_PILOTES_NC = Path(
-    BIC_RAW,
-    "sensors_anse_des_pilotes",
-    "ADCP",
-    "MADCP_2022098_AnsePilotes_19235_VEL.nc",
+# Define root data path
+DATA_RAW = Path("../data")
+
+# Define site data paths
+BIC = Path(DATA_RAW, "raw_data_downloads_bic_2022")
+CACOUNA = Path(DATA_RAW, "raw_data_downloads_cacouna_2022")
+RUPERT = Path(DATA_RAW, "raw_data_downloads_prince_rupert_2023")
+QUADRA = Path(DATA_RAW, "raw_data_downloads_quadra_2023")
+
+# Define ADCP data paths
+BIC_ANSE_DES_PILOTES_ADCP = Path(
+    BIC, "sensors_anse_des_pilotes", "ADCP", "MADCP_2022098_AnsePilotes_19235_VEL.nc"
 )
-BIC_LA_BALEINE_NC = Path(
-    BIC_RAW,
-    "sensors_la_baleine",
-    "ADCP",
-    "MADCP_2022098_LaBaleine_8601_VEL.nc",
+BIC_LA_BALEINE_ADCP = Path(
+    BIC, "sensors_la_baleine", "ADCP", "MADCP_2022098_LaBaleine_8601_VEL.nc"
 )
-CACOUNA_ILE_AUX_LIEVRES_1_NC = Path(
-    CACOUNA_RAW, "ADCP_between_2_sites", "MADCP_2022098_IleauxLievres1_24788_VEL.nc"
+CACOUNA_ILE_AUX_LIEVRES_1_ADCP = Path(
+    CACOUNA, "ADCP_between_2_sites", "MADCP_2022098_IleauxLievres1_24788_VEL.nc"
 )
-CACOUNA_ILE_AUX_LIEVRES_2_NC = Path(
-    CACOUNA_RAW, "ADCP_between_2_sites", "MADCP_2022098_IleauxLievres2_19238_VEL.nc"
+CACOUNA_ILE_AUX_LIEVRES_2_ADCP = Path(
+    CACOUNA, "ADCP_between_2_sites", "MADCP_2022098_IleauxLievres2_19238_VEL.nc"
 )
-RUPERT_TUGWELL_1_NC = Path(
-    RUPERT_RAW,
-    "sensors_tugwell1",
-    "ADCP",
-    "MADCP_2023098_Tugwell1_24788_VEL.nc",
+RUPERT_TUGWELL_1_ADCP = Path(
+    RUPERT, "sensors_tugwell1", "ADCP", "MADCP_2023098_Tugwell1_24788_VEL.nc"
 )
-RUPERT_TUGWELL_2_NC = Path(
-    RUPERT_RAW,
-    "sensors_tugwell2",
-    "ADCP",
-    "MADCP_2023098_Tugwell2_19238_VEL.nc",
+RUPERT_TUGWELL_2_ADCP = Path(
+    RUPERT, "sensors_tugwell2", "ADCP", "MADCP_2023098_Tugwell2_19238_VEL.nc"
 )
-QUADRA_MARINA_1_NC = Path(
-    QUADRA_RAW,
-    "sensors_marina1",
-    "ADCP",
-    "MADCP_2023098_Marina1_8601_VEL.nc",
+QUADRA_MARINA_1_ADCP = Path(
+    QUADRA, "sensors_marina1", "ADCP", "MADCP_2023098_Marina1_8601_VEL.nc"
 )
-QUADRA_MARINA_2_NC = Path(
-    QUADRA_RAW,
-    "sensors_marina2",
-    "ADCP",
-    "MADCP_2023098_Marina2_19235_VEL.nc",
+QUADRA_MARINA_2_ADCP = Path(
+    QUADRA, "sensors_marina2", "ADCP", "MADCP_2023098_Marina2_19235_VEL.nc"
 )
-ALL_NC = [
-    BIC_ANSE_DES_PILOTES_NC,
-    BIC_LA_BALEINE_NC,
-    CACOUNA_ILE_AUX_LIEVRES_1_NC,
-    CACOUNA_ILE_AUX_LIEVRES_2_NC,
-    RUPERT_TUGWELL_1_NC,
-    RUPERT_TUGWELL_2_NC,
-    QUADRA_MARINA_1_NC,
-    QUADRA_MARINA_2_NC,
+ALL_ADCP = [
+    BIC_ANSE_DES_PILOTES_ADCP,
+    BIC_LA_BALEINE_ADCP,
+    CACOUNA_ILE_AUX_LIEVRES_1_ADCP,
+    CACOUNA_ILE_AUX_LIEVRES_2_ADCP,
+    RUPERT_TUGWELL_1_ADCP,
+    RUPERT_TUGWELL_2_ADCP,
+    QUADRA_MARINA_1_ADCP,
+    QUADRA_MARINA_2_ADCP,
 ]
 BIC_ANSE_DES_PILOTES_TCM = Path(
     BIC_RAW, "sensors_anse_des_pilotes", "TCM", "2206004_Bic1_(0)_Current.csv"
@@ -107,8 +94,9 @@ CACOUNA_ILE_AUX_LIEVRES_2_TCM = Path(
     CACOUNA_RAW, "sensors_northeast", "TCM", "2206003_IleauxLievres2_(0)_Current.csv"
 )
 
+
 print("Creating descriptive plots of ADCP data...", flush=True)
-for p in ALL_NC:
+for p in ALL_ADCP:
     ds = xr.open_dataset(p)
     print("  {}".format(ds.attrs["platform"]))
 
