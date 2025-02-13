@@ -37,7 +37,7 @@ import matplotlib.pyplot as plt
 import adcp_processing as adcp
 
 
-# Define a bunch of path constants
+# Define a bunch of path constants.
 BIC_RAW = Path("../data/raw_data_downloads_bic_2022")
 CACOUNA_RAW = Path("../data/raw_data_downloads_cacouna_2022")
 RUPERT_RAW = Path("../data/raw_data_downloads_prince_rupert_2023")
@@ -94,7 +94,18 @@ ALL_NC = [
     QUADRA_MARINA_1_NC,
     QUADRA_MARINA_2_NC,
 ]
-
+BIC_ANSE_DES_PILOTES_TCM = Path(
+    BIC_RAW, "sensors_anse_des_pilotes", "TCM", "2206004_Bic1_(0)_Current.csv"
+)
+BIC_LA_BALEINE_TCM = Path(
+    BIC_RAW, "sensors_la_baleine", "TCM", "2206005_Bic2_(0)_Current.csv"
+)
+CACOUNA_ILE_AUX_LIEVRES_1_TCM = Path(
+    CACOUNA_RAW, "sensors_southwest", "TCM", "2206002_IleauxLievres1_(0)_Current.csv"
+)
+CACOUNA_ILE_AUX_LIEVRES_2_TCM = Path(
+    CACOUNA_RAW, "sensors_northeast", "TCM", "2206003_IleauxLievres2_(0)_Current.csv"
+)
 
 print("Creating descriptive plots of ADCP data...", flush=True)
 for p in ALL_NC:
