@@ -11,5 +11,4 @@
               the directory.
   ===============================================================================
 """
-
-from .adcp_plot_raw import plot_raw
+from . import calc, plot

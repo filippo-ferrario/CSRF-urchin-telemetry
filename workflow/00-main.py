@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 """
   ===============================================================================
-  Name   	: Master Main file
+  Name   	: 00-main.py (Main Python processing script)
   Author 	: Paul Covert
   Date   	: 2024-03-22
   Version	: 1.0.1
   URL		: 
-  Aim    	: Describe the structure of the Python_workflow directory and how
-              it fits in with the larger R-based workflow.
+  Aim    	: (1) Describe the structure of the Python_workflow directory and how
+                  it fits in with the larger R-based workflow.
+              (2) Control data processing, analysis, and plotting.
   ===============================================================================
 
   Envision that this directory will contain the main scripts that control the
@@ -32,6 +33,7 @@
 
 from pathlib import Path
 import xarray as xr
+import matplotlib.pyplot as plt
 import adcp_processing as adcp
 
 
@@ -94,9 +96,24 @@ ALL_NC = [
 ]
 
 
-# generate plots of adcp position and measured current for each sensor
+print("Creating descriptive plots of ADCP data...", flush=True)
 for p in ALL_NC:
     ds = xr.open_dataset(p)
-    fig_current, fig_position = adcp.plot_raw(ds)
+    print("  {}".format(ds.attrs["platform"]))
+
+    # calculations: horizontal velocity
+    ds = adcp.calc.horizontal_velocity(ds)
+
+    # generate plots of adcp position and measured current for each sensor
+    fig_current, fig_position = adcp.plot.raw(ds)
     fig_current.savefig(p.parent / (p.stem + "_position.png"))
     fig_position.savefig(p.parent / (p.stem + "_current.png"))
+
+    # generate windrose plots of adcp horizontal bottom currents and directions
+    fig_windrose = adcp.plot.windrose(ds)
+    fig_windrose.savefig(p.parent / (p.stem + "_windrose.png"))
+
+    # close everything to save memory
+    plt.close("all")
+
+print("done.")
