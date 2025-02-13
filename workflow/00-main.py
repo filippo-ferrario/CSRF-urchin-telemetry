@@ -82,16 +82,16 @@ ALL_ADCP = [
     QUADRA_MARINA_2_ADCP,
 ]
 BIC_ANSE_DES_PILOTES_TCM = Path(
-    BIC_RAW, "sensors_anse_des_pilotes", "TCM", "2206004_Bic1_(0)_Current.csv"
+    BIC, "sensors_anse_des_pilotes", "TCM", "2206004_Bic1_(0)_Current.csv"
 )
 BIC_LA_BALEINE_TCM = Path(
-    BIC_RAW, "sensors_la_baleine", "TCM", "2206005_Bic2_(0)_Current.csv"
+    BIC, "sensors_la_baleine", "TCM", "2206005_Bic2_(0)_Current.csv"
 )
 CACOUNA_ILE_AUX_LIEVRES_1_TCM = Path(
-    CACOUNA_RAW, "sensors_southwest", "TCM", "2206002_IleauxLievres1_(0)_Current.csv"
+    CACOUNA, "sensors_southwest", "TCM", "2206002_IleauxLievres1_(0)_Current.csv"
 )
 CACOUNA_ILE_AUX_LIEVRES_2_TCM = Path(
-    CACOUNA_RAW, "sensors_northeast", "TCM", "2206003_IleauxLievres2_(0)_Current.csv"
+    CACOUNA, "sensors_northeast", "TCM", "2206003_IleauxLievres2_(0)_Current.csv"
 )
 
 
@@ -114,5 +114,12 @@ for p in ALL_ADCP:
 
     # close everything to save memory
     plt.close("all")
+
+print("done.")
+
+
+print("Comparing ADCP and TCM current measurements...", flush=True)
+for p1, p2 in zip(ALL_ADCP, ALL_TCM):
+    pass
 
 print("done.")
