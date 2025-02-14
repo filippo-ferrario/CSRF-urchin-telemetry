@@ -37,7 +37,7 @@ import pandas as pd
 import xarray as xr
 import matplotlib.pyplot as plt
 import adcp
-
+import tcm
 
 # Define root data path
 DATA_RAW = Path("../data")
@@ -145,9 +145,7 @@ for adcp_filepath, tcm_filepath in zip(ALL_ADCP[0:4], ALL_TCM[0:4]):
     df_adcp = ds_adcp.to_pandas()
     print(df_adcp)
 
-    df_tcm = pd.read_csv(tcm_filepath, usecols={0, 1, 2})
-    df_tcm["ISO 8601 Time"] = pd.to_datetime(df_tcm["ISO 8601 Time"])
-    df_tcm.set_index("ISO 8601 Time", inplace=True)
+    df_tcm = tcm.read_csv(tcm_filepath)
     print(df_tcm)
 
 print("done.")
