@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
   ===============================================================================
@@ -32,10 +32,11 @@
 """
 
 from pathlib import Path
+import numpy as np
 import pandas as pd
 import xarray as xr
 import matplotlib.pyplot as plt
-import adcp_processing as adcp
+import adcp
 
 
 # Define root data path
@@ -96,18 +97,10 @@ CACOUNA_ILE_AUX_LIEVRES_1_TCM = Path(
 CACOUNA_ILE_AUX_LIEVRES_2_TCM = Path(
     CACOUNA, "sensors_northeast", "TCM", "2206003_IleauxLievres2_(0)_Current.csv"
 )
-RUPERT_TUGWELL_1_TCM = Path(
-    RUPERT, "sensors_tugwell1", "TCM", ""
-)
-RUPERT_TUGWELL_2_TCM = Path(
-    RUPERT, "sensors_tugwell2", "TCM", ""
-)
-QUADRA_MARINA_1_TCM = Path(
-    QUADRA, "sensors_marina1", "TCM", ""
-)
-QUADRA_MARINA_2_TCM = Path(
-    QUADRA, "sensors_marina2", "TCM", ""
-)
+RUPERT_TUGWELL_1_TCM = Path(RUPERT, "sensors_tugwell1", "TCM", "")
+RUPERT_TUGWELL_2_TCM = Path(RUPERT, "sensors_tugwell2", "TCM", "")
+QUADRA_MARINA_1_TCM = Path(QUADRA, "sensors_marina1", "TCM", "")
+QUADRA_MARINA_2_TCM = Path(QUADRA, "sensors_marina2", "TCM", "")
 ALL_TCM = [
     BIC_ANSE_DES_PILOTES_TCM,
     BIC_LA_BALEINE_TCM,
@@ -119,34 +112,42 @@ ALL_TCM = [
     QUADRA_MARINA_2_TCM,
 ]
 
-
+"""
 print("Creating descriptive plots of ADCP data...", flush=True)
 for adcp_filepath in ALL_ADCP:
-    ds = xr.open_dataset(adcp_filepath)
-    print("  {}".format(ds.attrs["platform"]))
+    ds_adcp = xr.open_dataset(adcp_filepath)
+    print("  {}".format(ds_adcp.attrs["platform"]))
 
     # calculations: horizontal velocity
-    ds = adcp.calc.horizontal_velocity(ds)
+    ds_adcp = adcp.calc.horizontal_velocity(ds_adcp)
 
     # generate plots of adcp position and measured current for each sensor
-    fig_current, fig_position = adcp.plot.raw(ds)
+    fig_current, fig_position = adcp.plot.raw(ds_adcp)
     fig_current.savefig(p.parent / (p.stem + "_position.png"))
     fig_position.savefig(p.parent / (p.stem + "_current.png"))
 
     # generate windrose plots of adcp horizontal bottom currents and directions
-    fig_windrose = adcp.plot.windrose(ds)
+    fig_windrose = adcp.plot.windrose(ds_adcp)
     fig_windrose.savefig(p.parent / (p.stem + "_windrose.png"))
 
     # close everything to save memory
     plt.close("all")
 
 print("done.")
-
+"""
 
 print("Comparing ADCP and TCM current measurements...", flush=True)
 for adcp_filepath, tcm_filepath in zip(ALL_ADCP[0:4], ALL_TCM[0:4]):
-    ds = xr.open_dataset(adcp_filepath)
-    df = pd.read_csv(tcm_filepath)
-    pass
+    ds_adcp = xr.open_dataset(adcp_filepath)
+    ds_adcp = adcp.calc.horizontal_velocity(ds_adcp)
+    ds_adcp = ds_adcp.sel(depth=np.max(ds_adcp["depth"]))
+    ds_adcp = ds_adcp.dropna("time")
+    df_adcp = ds_adcp.to_pandas()
+    print(df_adcp)
+
+    df_tcm = pd.read_csv(tcm_filepath, usecols={0, 1, 2})
+    df_tcm["ISO 8601 Time"] = pd.to_datetime(df_tcm["ISO 8601 Time"])
+    df_tcm.set_index("ISO 8601 Time", inplace=True)
+    print(df_tcm)
 
 print("done.")
