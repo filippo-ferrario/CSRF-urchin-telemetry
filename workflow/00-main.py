@@ -5,7 +5,7 @@
   Name   	: 00-main.py (Main Python processing script)
   Author 	: Paul Covert
   Date   	: 2024-03-22
-  Version	: 1.0.1
+  Version	: 1.1.0
   URL		: 
   Aim    	: (1) Describe the structure of the Python_workflow directory and how
                   it fits in with the larger R-based workflow.
@@ -112,40 +112,35 @@ ALL_TCM = [
     QUADRA_MARINA_2_TCM,
 ]
 
-"""
+
 print("Creating descriptive plots of ADCP data...", flush=True)
 for adcp_filepath in ALL_ADCP:
-    ds_adcp = xr.open_dataset(adcp_filepath)
+    ds_adcp = adcp.open_dataset(adcp_filepath)
     print("  {}".format(ds_adcp.attrs["platform"]))
-
-    # calculations: horizontal velocity
-    ds_adcp = adcp.calc.horizontal_velocity(ds_adcp)
 
     # generate plots of adcp position and measured current for each sensor
     fig_current, fig_position = adcp.plot.raw(ds_adcp)
-    fig_current.savefig(p.parent / (p.stem + "_position.png"))
-    fig_position.savefig(p.parent / (p.stem + "_current.png"))
+    fig_current.savefig(adcp_filepath.parent / (adcp_filepath.stem + "_position.png"))
+    fig_position.savefig(adcp_filepath.parent / (adcp_filepath.stem + "_current.png"))
 
     # generate windrose plots of adcp horizontal bottom currents and directions
     fig_windrose = adcp.plot.windrose(ds_adcp)
-    fig_windrose.savefig(p.parent / (p.stem + "_windrose.png"))
+    fig_windrose.savefig(adcp_filepath.parent / (adcp_filepath.stem + "_windrose.png"))
 
     # close everything to save memory
     plt.close("all")
 
 print("done.")
-"""
+
 
 print("Comparing ADCP and TCM current measurements...", flush=True)
 for adcp_filepath, tcm_filepath in zip(ALL_ADCP[0:4], ALL_TCM[0:4]):
-    ds_adcp = xr.open_dataset(adcp_filepath)
-    ds_adcp = adcp.calc.horizontal_velocity(ds_adcp)
+    ds_adcp = adcp.open_dataset(adcp_filepath)
+    df_tcm = tcm.read_csv(tcm_filepath)
+    print("  {}".format(ds_adcp.attrs["platform"]))
+    
     ds_adcp = ds_adcp.sel(depth=np.max(ds_adcp["depth"]))
     ds_adcp = ds_adcp.dropna("time")
     df_adcp = ds_adcp.to_pandas()
-    print(df_adcp)
-
-    df_tcm = tcm.read_csv(tcm_filepath)
-    print(df_tcm)
 
 print("done.")
