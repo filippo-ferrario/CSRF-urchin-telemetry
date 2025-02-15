@@ -112,7 +112,7 @@ ALL_TCM = [
     QUADRA_MARINA_2_TCM,
 ]
 
-
+"""
 print("Creating descriptive plots of ADCP data...", flush=True)
 for adcp_filepath in ALL_ADCP:
     ds_adcp = adcp.open_dataset(adcp_filepath)
@@ -131,6 +131,21 @@ for adcp_filepath in ALL_ADCP:
     plt.close("all")
 
 print("done.")
+"""
+
+"""
+print("Creating descriptive plots of TCM data...", flush=True)
+for tcm_filepath in ALL_TCM[0:4]:
+    df_tcm = tcm.read_csv(tcm_filepath)
+    #print("  {}".format(ds_adcp.attrs["platform"]))
+
+    # generate plots of adcp position and measured current for each sensor
+    fig, (ax_speed, ax_dir) = plt.subplots(nrows=2, ncols=1, sharex=True)
+    ax_speed.plot(df_tcm["speed"], '.')
+    ax_dir.plot(df_tcm["dir"], '.')
+print("done.")
+plt.show()
+"""
 
 
 print("Comparing ADCP and TCM current measurements...", flush=True)
@@ -138,9 +153,38 @@ for adcp_filepath, tcm_filepath in zip(ALL_ADCP[0:4], ALL_TCM[0:4]):
     ds_adcp = adcp.open_dataset(adcp_filepath)
     df_tcm = tcm.read_csv(tcm_filepath)
     print("  {}".format(ds_adcp.attrs["platform"]))
-    
+
+    ds_adcp["dz"] = ds_adcp["xducer_depth"] - np.max(ds_adcp["depth"])
     ds_adcp = ds_adcp.sel(depth=np.max(ds_adcp["depth"]))
     ds_adcp = ds_adcp.dropna("time")
     df_adcp = ds_adcp.to_pandas()
 
+    df_adcp["speed_tcm"] = np.interp(df_adcp.index, df_tcm.index, df_tcm["speed"])
+    df_adcp["dir_tcm"] = np.interp(df_adcp.index, df_tcm.index, df_tcm["dir"])
+    """
+    fig, ax = plt.subplots(nrows=1, ncols=2)
+    dz_idx = df_adcp["dz"] <= 50.0
+    ax[0].scatter(
+        df_adcp["speed"][dz_idx],
+        df_adcp["speed_tcm"][dz_idx],
+        c=df_adcp["dz"][dz_idx],
+        s=1,
+    )
+    sc = ax[1].scatter(
+        df_adcp["dir"][dz_idx],
+        df_adcp["dir_tcm"][dz_idx],
+        c=df_adcp["dz"][dz_idx],
+        s=1,
+    )
+    plt.colorbar(sc)
+    """
+    fig2, ax2 = plt.subplots(nrows=2, ncols=1, sharex=True)
+    ax2[0].plot(df_adcp["speed"])
+    ax2[0].plot(df_adcp["speed_tcm"])
+    ax2[1].plot(df_adcp["dir"])
+    ax2[1].plot(df_adcp["dir_tcm"])
+    
+    
+
 print("done.")
+plt.show()
