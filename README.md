@@ -4,6 +4,8 @@
 
 - [Introduction](#introduction)
 - [Installation](#installation)
+  - [R](#r)
+  - [Python](#python)
 - [Project Structure](#project-structure)
 - [Data & Output](#data--output)
 - [Contributing](#contributing)
@@ -16,14 +18,24 @@ This repository contains data processing and visualization code for analysis of 
 ## Installation
 Depending on the analysis being performed, either `R`, `Python`, or both will need to be installed on your local machine.
 
-The `R` version to be used in this project is __4.3.2__.  
+### R
+The `R` version to be used in this project is __4.3.2__.  You will also need `Rtools` __4.3__ installed.  To set up your environment, open `R` or `RStudio` from the project directory.  If the project is properly installed, you will see a message similar to
+```r
+Project '~/CSRF-urchin-telemetry' loaded. [renv 1.0.3]
+```
+Use renv to list and install the necessary packages.
+```r
+renv::status()
+renv::restore()
+```
 
+### Python
 The `Python` version used in this project is __3.11__.  The easiest way to create the environment containing this version of Python alongside the necessary numeric and plotting packages is with a `conda` installation.  From the commandline in the root project directory, enter the following to create the environment:
-```sh
+```bash
 conda env create -f environment.yml
 ```
 To activate the environment, enter:
-```sh
+```bash
 conda activate urchins
 ```
 
