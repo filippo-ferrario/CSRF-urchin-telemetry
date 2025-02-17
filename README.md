@@ -5,7 +5,7 @@
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Project Structure](#project-structure)
-- [Data & Output](#data-output)
+- [Data & Output](#data--output)
 - [Contributing](#contributing)
   
 <!-- /TOC -->
