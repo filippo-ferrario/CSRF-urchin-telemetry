@@ -39,7 +39,7 @@ The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj`
 │   ├── activate.R/
 │   ├── library
 │   └── settings.json
-├── conda-environment.yaml
+├── environment.yaml
 │
 ├── workflow/
 │   ├── 00-main.R
