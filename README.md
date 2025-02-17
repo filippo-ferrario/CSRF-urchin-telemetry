@@ -59,7 +59,7 @@ The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj`
 │
 └── output/
 ```
-Last updated: 2025-02-17
+ <div align="right"> Last updated: 2025-02-17 </div>
 
 ## Data & Output
 Instructions on accessing data and output directories on Azure.
