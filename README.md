@@ -11,7 +11,7 @@
 <!-- /TOC -->
 
 ## Introduction
-This repository contains data processing and visualization code for analysis of telemetry, photomosaic, and environmental data from the CSRF-funded Urchin Telemetry Project.  Given the size of the raw and processed data, these are not contained in the repository.  Instead, they are hosted on an Azure repository.
+This repository contains data processing and visualization code for analysis of telemetry, photomosaic, and environmental data from the CSRF-funded Urchin Telemetry Project.  Given the size of the raw and processed data files, these are not contained in the repository.  Instead, they are hosted on Azure.
 
 ## Installation
 Depending on the analysis being performed, either `R`, `Python`, or both will need to be installed on your local machine.
@@ -62,7 +62,7 @@ The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj`
  <div align="right"> Last updated: 2025-02-17 </div>
 
 ## Data & Output
-Instructions on accessing data and output directories on Azure.
+All of the raw, processed data and visualization output are to be placed in the `data` and `output` directories.  You should keep working copies of these directories locally and update the Azure storage containers when the processing/analysis task is completed.  Connect to the Azure container using the [Microsoft Azure Storage Explorer](https://azure.microsoft.com/en-ca/products/storage/storage-explorer).  Contact project maintainer for specifics on connecting to the storage container.
 
 ## Contributing
 
