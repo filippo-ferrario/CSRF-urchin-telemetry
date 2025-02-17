@@ -4,7 +4,14 @@
 data/
 output/
 
+# Python ignores
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Jupyter notebook and Jupyter lab
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+*-checkpoint.py
+*-checkpoint.R
