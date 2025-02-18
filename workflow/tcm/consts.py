@@ -22,17 +22,21 @@ LA_BALEINE_SLICE = slice(
     pd.to_datetime("2022-07-29T00:00:00"),
     pd.to_datetime("2022-11-06T17:01:00")
 )
+ILE_AUX_LIEVRES_1_SLICE = slice(
+    pd.to_datetime("2022-07-20T00:00:00"),
+    pd.to_datetime("2022-11-09T00:00:00")
+)
+ILE_AUX_LIEVRES_2_SLICE = slice(
+    pd.to_datetime("2022-07-20T00:00:00"),
+    pd.to_datetime("2022-11-09T00:00:00")
+)
 """
-CACOUNA_ILE_AUX_LIEVRES_1_TIMEBOUNDS = slice(
+TUGWELL_1_SLICE = slice(
 )
-CACOUNA_ILE_AUX_LIEVRES_2_TIMEBOUNDS = slice(
+TUGWELL_2_SLICE = slice(
 )
-RUPERT_TUGWELL_1_TIMEBOUNDS = slice(
+MARINA_1_SLICE = slice(
 )
-RUPERT_TUGWELL_2_TIMEBOUNDS = slice(
-)
-QUADRA_MARINA_1_TIMEBOUNDS = slice(
-)
-QUADRA_MARINA_2_TIMEBOUNDS = slice(
+MARINA_2_SLICE = slice(
 )
 """
