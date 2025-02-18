@@ -17,23 +17,23 @@ import xarray as xr
 def horizontal_velocity(u, v):
     """Calculate horizontal current speed and direction based on
     northward and eastward current velocities.
-    
+
     Parameters
     ----------
     u : xarray DataArray
         northward current velocities (m/s)
     v : xarray DataArray
         eastward current velocities (m/s)
-        
+
     Returns
     -------
     s : xarray DataArray
         horizontal current speed (m/s)
     theta : xarray DataArray
         horizontal current direction (deg)
-    
+
     """
-    s = (u ** 2.0 + v ** 2.0) ** 0.5
+    s = (u**2.0 + v**2.0) ** 0.5
     s.attrs = {
         "standard_name": "horizontal_sea_water_speed",
         "long_name": "horizontal sea water speed",
