@@ -10,31 +10,29 @@
   ===============================================================================
 """
 
-from pandas import to_datetime
+import pandas as pd
 
 
 # Define time intervals over which to extract TCM data
-BIC_ANSE_DES_PILOTES_TIMEBOUNDS = [to_datetime("2022-01-01"), to_datetime("2022-01-01")]
-BIC_LA_BALEINE_TIMEBOUNDS = [to_datetime("2022-01-01"), to_datetime("2022-01-01")]
-CACOUNA_ILE_AUX_LIEVRES_1_TIMEBOUNDS = [
-    to_datetime("2022-01-01"),
-    to_datetime("2022-01-01"),
-]
-CACOUNA_ILE_AUX_LIEVRES_2_TIMEBOUNDS = [
-    to_datetime("2022-01-01"),
-    to_datetime("2022-01-01"),
-]
+ANSE_DES_PILOTES_SLICE = slice(
+    pd.to_datetime("2022-07-29T00:00:00"), 
+    pd.to_datetime("2022-11-06T14:41:00")
+)
+LA_BALEINE_SLICE = slice(
+    pd.to_datetime("2022-07-29T00:00:00"),
+    pd.to_datetime("2022-11-06T17:01:00")
+)
 """
-RUPERT_TUGWELL_1_TIMEBOUNDS = [
-    to_datetime(), to_datetime
-]
-RUPERT_TUGWELL_2_TIMEBOUNDS = [
-    to_datetime(), to_datetime
-]
-QUADRA_MARINA_1_TIMEBOUNDS = [
-    to_datetime(), to_datetime
-]
-QUADRA_MARINA_2_TIMEBOUNDS = [
-    to_datetime(), to_datetime
-]
+CACOUNA_ILE_AUX_LIEVRES_1_TIMEBOUNDS = slice(
+)
+CACOUNA_ILE_AUX_LIEVRES_2_TIMEBOUNDS = slice(
+)
+RUPERT_TUGWELL_1_TIMEBOUNDS = slice(
+)
+RUPERT_TUGWELL_2_TIMEBOUNDS = slice(
+)
+QUADRA_MARINA_1_TIMEBOUNDS = slice(
+)
+QUADRA_MARINA_2_TIMEBOUNDS = slice(
+)
 """
