@@ -11,5 +11,5 @@
               the directory.
   ===============================================================================
 """
-from . import io, paths
+from . import io, paths, consts
 from .io import read_csv
