@@ -57,7 +57,7 @@ The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj`
 ├── workflow/
 │   ├── 00-main.R
 │   ├── 00-main.py
-│   ├── 00-main.ipynb
+│   ├── 00-explore.ipynb
 │   ├── adcp/
 │   ├── preprocessing-environmental_data/
 │   ├── preprocessing-telemetry_filtering/
