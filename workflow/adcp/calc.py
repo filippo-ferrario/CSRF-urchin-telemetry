@@ -14,24 +14,40 @@ import numpy as np
 import xarray as xr
 
 
-def horizontal_velocity(ds):
+def horizontal_velocity(u, v):
     """Calculate horizontal current speed and direction based on
-    northward and eastward current velocities."""
-    ds["horiz_speed"] = (ds["LCNSAP01"] ** 2.0 + ds["LCEWAP01"] ** 2.0) ** 0.5
-    ds["horiz_speed"].attrs = {
+    northward and eastward current velocities.
+
+    Parameters
+    ----------
+    u : xarray DataArray
+        northward current velocities (m/s)
+    v : xarray DataArray
+        eastward current velocities (m/s)
+
+    Returns
+    -------
+    s : xarray DataArray
+        horizontal current speed (m/s)
+    theta : xarray DataArray
+        horizontal current direction (deg)
+
+    """
+    s = (u**2.0 + v**2.0) ** 0.5
+    s.attrs = {
         "standard_name": "horizontal_sea_water_speed",
         "long_name": "horizontal sea water speed",
         "units": "m/s",
-        "data_max": np.max(ds["horiz_speed"].values),
-        "data_min": np.min(ds["horiz_speed"].values),
+        "data_max": np.max(u.values),
+        "data_min": np.min(u.values),
     }
-    ds["horiz_heading"] = np.arctan2(ds["LCEWAP01"], ds["LCNSAP01"]) * 180.0 / np.pi
-    ds["horiz_heading"] = (ds["horiz_heading"] + 360.0) % 360.0
-    ds["horiz_heading"].attrs = {
+    theta = np.arctan2(v, u) * 180.0 / np.pi
+    theta = (theta + 360.0) % 360.0
+    theta.attrs = {
         "standard_name": "horizontal_sea_water_heading",
         "long_name": "horizontal sea water heading",
         "units": "degree",
-        "data_max": np.max(ds["horiz_heading"].values),
-        "data_min": np.min(ds["horiz_heading"].values),
+        "data_max": np.max(theta.values),
+        "data_min": np.min(theta.values),
     }
-    return ds
+    return s, theta

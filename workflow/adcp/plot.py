@@ -20,10 +20,10 @@ def _position(ds):
     fig, (ax_depth, ax_heading, ax_pitch, ax_roll) = plt.subplots(
         ncols=1, nrows=4, sharex=True, figsize=(6, 9), constrained_layout=True
     )
-    ds["ADEPZZ01"].plot(ax=ax_depth)
-    ds["HEADCM01"].plot(ax=ax_heading)
-    ds["PTCHGP01"].plot(ax=ax_pitch)
-    ds["ROLLGP01"].plot(ax=ax_roll)
+    ds["xducer_depth"].plot(ax=ax_depth)
+    ds["xducer_heading"].plot(ax=ax_heading)
+    ds["xducer_pitch"].plot(ax=ax_pitch)
+    ds["xducer_roll"].plot(ax=ax_roll)
 
     ax_depth.set_xlabel("")
     ax_heading.set_xlabel("")
@@ -38,9 +38,9 @@ def _current(ds):
     fig, (ax_north, ax_east, ax_up) = plt.subplots(
         ncols=1, nrows=3, sharex=True, figsize=(6, 9), constrained_layout=True
     )
-    ds["LCNSAP01"].where(ds["LCNSAP01_QC"] <= 2).plot(ax=ax_north)
-    ds["LCEWAP01"].where(ds["LCNSAP01_QC"] <= 2).plot(ax=ax_east)
-    ds["LRZAAP01"].where(ds["LRZAAP01_QC"] <= 2).plot(ax=ax_up)
+    ds["velocity_north"].where(ds["velocity_north_qc"] <= 2).plot(ax=ax_north)
+    ds["velocity_east"].where(ds["velocity_east_qc"] <= 2).plot(ax=ax_east)
+    ds["velocity_up"].where(ds["velocity_up_qc"] <= 2).plot(ax=ax_up)
 
     ax_north.set_xlabel("")
     ax_north.yaxis.set_inverted(True)
@@ -71,8 +71,8 @@ def timeseries(ds, depth=None):
     fig, (ax_speed, ax_heading) = plt.subplots(
         ncols=1, nrows=2, sharex=True, constrained_layout=True
     )
-    ds_1d["horiz_speed"].plot(ax=ax_speed)
-    ds_1d["horiz_heading"].plot(ax=ax_heading)
+    ds_1d["speed"].plot(ax=ax_speed)
+    ds_1d["dir"].plot(ax=ax_heading)
     fig.suptitle("{}: {:.2f}m".format(ds_1d.attrs["platform"], depth))
     return fig
 
@@ -91,8 +91,8 @@ def histogram(ds, depth=None):
     fig, (ax_speed, ax_heading) = plt.subplots(
         ncols=2, nrows=1, sharey=True, constrained_layout=True
     )
-    ds_1d["horiz_speed"].plot.hist(ax=ax_speed, bins=25)
-    ds_1d["horiz_heading"].plot.hist(ax=ax_heading, bins=25)
+    ds_1d["speed"].plot.hist(ax=ax_speed, bins=25)
+    ds_1d["dir"].plot.hist(ax=ax_heading, bins=25)
     fig.suptitle("{}: {:.2f}m".format(ds_1d.attrs["platform"], depth))
     return fig
 
@@ -112,8 +112,8 @@ def windrose(ds, depth=None):
     fig = plt.figure(figsize=(6, 6))
     ax_rose = WindroseAxes.from_ax(fig=fig)
     ax_rose.bar(
-        ds_1d["horiz_heading"].values,
-        ds_1d["horiz_speed"].values,
+        ds_1d["dir"].values,
+        ds_1d["speed"].values,
         nsector=36,
         bins=(0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0),
         normed=True,
