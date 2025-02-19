@@ -65,11 +65,6 @@ The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj`
 │   └── tcm/
 │
 ├── data/
-│   ├── raw_data_downloads_bic_2022/
-│   ├── raw_data_downloads_cacouna_2022/
-│   ├── raw_data_downloads_prince_rupert_2023/
-│   └── raw_data_downloads_quadra_2023/
-│
 └── output/
 ```
  <div align="right"> Last updated: 2025-02-17 </div>
