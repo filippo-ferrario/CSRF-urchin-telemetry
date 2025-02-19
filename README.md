@@ -88,6 +88,7 @@ Please adhere to the steps below to contribute new work to this repository.
 * Develop new code on your local machine and periodically push changes to Github
 * When the task is completed, submit a pull request to merge the branch back into `main`.
 
+#
  <div align="right"> Last updated: 2025-02-19 </div>
  
 <!-- + the file `0-packrat-initialize.R` that has been created by Filippo Ferrario at the beginning to initialize the library -->
