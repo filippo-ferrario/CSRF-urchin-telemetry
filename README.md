@@ -9,6 +9,8 @@
 - [Project Structure](#project-structure)
 - [Data & Output](#data--output)
 - [Contributing](#contributing)
+  - [File I/O](#file-io)
+  - [Git branches](#git-branches)
   
 <!-- /TOC -->
 
@@ -69,10 +71,22 @@ The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj`
 ```
 
 ## Data & Output
-All of the raw, processed data and visualization output are to be placed in the `data` and `output` directories.  You should keep working copies of these directories locally and update the Azure storage containers when the processing/analysis task is completed.  Connect to the Azure container (https://ppocec.blob.core.windows.net/csrf-urchin-telemetry) using the [Microsoft Azure Storage Explorer](https://azure.microsoft.com/en-ca/products/storage/storage-explorer).  Contact project maintainer the obtain the shared access code for the storage container.
+All of the raw, processed data and visualization output are to be placed in the `data` and `output` directories.  You should keep working copies of these directories locally and update the Azure storage containers when the processing/analysis task is completed.  Connect to the Azure container (https://ppocec.blob.core.windows.net/csrf-urchin-telemetry) using the [Microsoft Azure Storage Explorer](https://azure.microsoft.com/en-ca/products/storage/storage-explorer).  Contact the project maintainer to obtain the shared access code for the storage container.
 
 ## Contributing
 
+
+### File I/O
+Design your code to read and write from the `data` and `output` directories.  Use of relative paths will increase the likelihood that the code will run from another person's userspace on their local machine.  Since the `data` and `output` directories are not updated through `git`, any files created in those directories will need to be manually copied to the Azure storage container.
+
+### Git branches
+When adding new contributions to the repository, please create a branch to work from instead of working in `main`. Branches should, more or less, contain work associated with a specific task, rather than being open-ended.  So, if you had a couple of tasks, it is better to create two branches `task_1` and `task_2` rather than a generic branch `stuff_to_work_on`.  In this way, work associated with specific task will have less likelihood of impacting or breaking code in other tasks.
+
+Please adhere to the steps below to contribute new work to this repository.
+* Define the task to be done
+* Create a new branch for this task
+* Develop new code on your local machine and periodically push changes to Github
+* When the task is completed, submit a pull request to merge the branch back into `main`.
 
  <div align="right"> Last updated: 2025-02-19 </div>
  
