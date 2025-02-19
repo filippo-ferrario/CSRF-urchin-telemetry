@@ -84,9 +84,10 @@ When adding new contributions to the repository, please create a branch to work 
 
 Please adhere to the steps below to contribute new work to this repository.
 * Define the task to be done
-* Create a new branch for this task
+* [Create a new branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository#creating-a-branch) for this task
 * Develop new code on your local machine and periodically push changes to Github
-* When the task is completed, submit a pull request to merge the branch back into `main`.
+* When the task is completed, [submit a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request#creating-the-pull-request) to merge the branch back into `main`.
+* [Delete the branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository#deleting-a-branch) once the pull request has been approved and the merge complete.
 
 #
  <div align="right"> Last updated: 2025-02-19 </div>
