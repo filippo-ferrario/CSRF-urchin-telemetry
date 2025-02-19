@@ -67,7 +67,6 @@ The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj`
 ├── data/
 └── output/
 ```
- <div align="right"> Last updated: 2025-02-19 </div>
 
 ## Data & Output
 All of the raw, processed data and visualization output are to be placed in the `data` and `output` directories.  You should keep working copies of these directories locally and update the Azure storage containers when the processing/analysis task is completed.  Connect to the Azure container using the [Microsoft Azure Storage Explorer](https://azure.microsoft.com/en-ca/products/storage/storage-explorer).  Contact project maintainer for specifics on connecting to the storage container.
@@ -75,6 +74,8 @@ All of the raw, processed data and visualization output are to be placed in the 
 ## Contributing
 
 
+ <div align="right"> Last updated: 2025-02-19 </div>
+ 
 <!-- + the file `0-packrat-initialize.R` that has been created by Filippo Ferrario at the beginning to initialize the library -->
 
 
