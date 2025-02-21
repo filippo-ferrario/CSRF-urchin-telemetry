@@ -42,7 +42,7 @@ conda activate urchins
 ```
 
 ## Project Structure
-The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj` at the top level.  The work environment is defined by the `renv` directory for `R` and the `environment.yaml` file for `Python`.  The `workflow` directory contains scripts and subdirectories for specific data processing tasks.  The scripts `00-main.R` and `00-main.py` are the primary control scripts.  Specific processing scripts are contained with the subdirectories of `workflow`.  While not part of the Github repository, the `data` and `output` directories should be located at the same level as `workflow`.  It is critical that this file structure is adhered to, for ease of project maintenance.  The directory tree below illustrates the project structure.
+The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj` at the top level.  The work environment is defined by the `renv` directory for `R` and the `environment.yaml` file for `Python`.  The `workflow` directory contains scripts and subdirectories for specific data processing tasks.  The scripts `00-main.R` and `00-main.py` are the primary control scripts.  Specific processing scripts are contained within the subdirectories of `workflow`.  While not part of the Github repository, the `data` and `output` directories should be located at the same level as `workflow`.  It is critical that this file structure is adhered to, for ease of project maintenance.  The directory tree below illustrates the project structure.
 
 ```sh
 ├── README.md
@@ -51,7 +51,7 @@ The project is primarily an `R` project defined by `CSRF_urchin_telemetry.Rproj`
 ├── CSRF-urchin-telemetry.Rproj
 ├── initialize_renv.R
 ├── renv/
-│   ├── activate.R/
+│   ├── activate.R
 │   ├── library
 │   └── settings.json
 ├── environment.yaml
