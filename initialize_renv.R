@@ -4,7 +4,7 @@
 # Date   	:  [dd-mm-yyyy] 14-02-2024
 # Version	: 1
 # URL		: following  https://rstudio.github.io/renv/articles/renv.html
-# Aim    	: 
+# Aim    	:
 # ===============================================================================
 
 # R version used in 4.3.2 with Rtools43
@@ -26,10 +26,10 @@ renv::init()
 # - mgcv       [required by ggplot2]
 # Consider reinstalling these packages before snapshotting the lockfile.
 
-# Error in renv_snapshot_validate_report(valid, prompt, force) : 
+# Error in renv_snapshot_validate_report(valid, prompt, force) :
 #   aborting snapshot due to pre-flight validation failure
 # In addition: Warning message:
-# "~/.Rprofile" is missing a trailing newline 
+# "~/.Rprofile" is missing a trailing newline
 # Traceback (most recent calls last):
 # 4: renv::init()
 # 3: snapshot(library = libpaths, repos = repos, prompt = FALSE, project = project)
@@ -43,4 +43,3 @@ renv::install(c('codetools','MASS','mgcv'))
 renv::init()
 
 renv::snapshot()
-     
