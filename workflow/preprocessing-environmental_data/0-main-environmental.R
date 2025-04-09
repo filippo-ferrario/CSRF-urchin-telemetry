@@ -286,7 +286,7 @@ generate.plots.zoom(TCM_temp2,
                                  "BC_TCMTemp_rollmean_3hours_week.png",
                                  "BC_TCMTemp_rollmean_6hours_week.png"),
                     y_vec = c("Temperature (C)", "Temperature (C)", "Temperature (C)"),
-                    time_vec = c("2022-09-01 00:00:00", "2022-09-07 00:00:00"),
+                    time_vec = c("2023-09-01 00:00:00", "2023-09-07 00:00:00"),
                     save_loc = here("output/plots/"))
 generate.plots.zoom(aqua2,
                     origvar_vec = c("Temp", "Temp", "Temp",
@@ -301,7 +301,7 @@ generate.plots.zoom(aqua2,
                                  "BC_AquaSal_rollmean_6hours_week.png"),
                     y_vec = c("Temperature (C)", "Temperature (C)", "Temperature (C)",
                               "Salinity (psu)", "Salinity (psu)", "Salinity (psu)"),
-                    time_vec = c("2022-09-01 00:00:00", "2022-09-07 00:00:00"),
+                    time_vec = c("2023-09-01 00:00:00", "2023-09-07 00:00:00"),
                     save_loc = here("output/plots/"))
 generate.plots.zoom(star2,
                     origvar_vec = c("Temp", "Temp", "Temp",
@@ -316,7 +316,7 @@ generate.plots.zoom(star2,
                                  "BC_StarSal_rollmean_6hours_week.png"),
                     y_vec = c("Temperature (C)", "Temperature (C)", "Temperature (C)",
                               "Salinity (psu)", "Salinity (psu)", "Salinity (psu)"),
-                    time_vec = c("2022-09-01 00:00:00", "2022-09-07 00:00:00"),
+                    time_vec = c("2023-09-01 00:00:00", "2023-09-07 00:00:00"),
                     save_loc = here("output/plots/"))
 
 # Two Day Zoom
