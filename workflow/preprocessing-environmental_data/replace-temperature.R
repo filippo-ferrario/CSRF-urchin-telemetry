@@ -237,24 +237,24 @@ TCM_temp <- dplyr::bind_rows(TCM_temp_split)
 star_split <- split(star, list(star$Site,star$Sensor), drop = TRUE)
 star_split <- lapply(star_split, function(df) {
   df %>%
-  mutate(temp_ma01 = zoo::rollmean(Temp, k = 30, fill = NA),
-         temp_ma02 = zoo::rollmean(Temp, k = 120, fill = NA),
-         temp_ma03 = zoo::rollmean(Temp, k = 360, fill = NA),
-         sal_ma01 = zoo::rollmean(Sal, k = 30, fill = NA),
-         sal_ma02 = zoo::rollmean(Sal, k = 120, fill = NA),
-         sal_ma03 = zoo::rollmean(Sal, k = 360, fill = NA))
+  mutate(temp_ma01 = zoo::rollmean(Temp, k = 3, fill = NA),
+         temp_ma02 = zoo::rollmean(Temp, k = 12, fill = NA),
+         temp_ma03 = zoo::rollmean(Temp, k = 36, fill = NA),
+         sal_ma01 = zoo::rollmean(Sal, k = 3, fill = NA),
+         sal_ma02 = zoo::rollmean(Sal, k = 12, fill = NA),
+         sal_ma03 = zoo::rollmean(Sal, k = 36, fill = NA))
 })
 star <- dplyr::bind_rows(star_split)
 
 aqua_split <- split(aqua, list(aqua$Site,aqua$Serial), drop = TRUE)
 aqua_split <- lapply(aqua_split, function(df) {
   df %>%
-    mutate(temp_ma01 = zoo::rollmean(Temp, k = 30, fill = NA),
-           temp_ma02 = zoo::rollmean(Temp, k = 120, fill = NA),
-           temp_ma03 = zoo::rollmean(Temp, k = 360, fill = NA),
-           sal_ma01 = zoo::rollmean(Sal, k = 30, fill = NA),
-           sal_ma02 = zoo::rollmean(Sal, k = 120, fill = NA),
-           sal_ma03 = zoo::rollmean(Sal, k = 360, fill = NA)
+    mutate(temp_ma01 = zoo::rollmean(Temp, k = 3, fill = NA),
+           temp_ma02 = zoo::rollmean(Temp, k = 12, fill = NA),
+           temp_ma03 = zoo::rollmean(Temp, k = 36, fill = NA),
+           sal_ma01 = zoo::rollmean(Sal, k = 3, fill = NA),
+           sal_ma02 = zoo::rollmean(Sal, k = 12, fill = NA),
+           sal_ma03 = zoo::rollmean(Sal, k = 36, fill = NA)
     )
 })
 aqua <- dplyr::bind_rows(aqua_split)

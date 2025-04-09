@@ -5,6 +5,8 @@
 # Version	: 1
 # URL		:
 # Aim    	: Clean environmental data from AquaMeasure, TCM, and StarOddi devices
+# Input   : Dataframe data, Dataframe metadata, boolean star
+# Output  : Dataframe
 # ===============================================================================
 
 initial.clean <- function(data, metadata, star = FALSE) {
