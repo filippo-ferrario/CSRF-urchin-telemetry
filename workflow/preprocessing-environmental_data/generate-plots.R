@@ -16,7 +16,6 @@ generate.plots <- function(data, var_vec, name_vec, y_vec, save_loc) {
   for (i in 1:length(var_vec)) {
     data %>%
       ggplot(aes(x = DateTime)) +
-      #geom_point(aes(y = Temperature), alpha = 0.1, shape = 16) +
       geom_path(aes(y = !!sym(var_vec[i]), color = Position)) +
       labs(title = name_vec[i], x = '', y = y_vec[i]) +
       theme_bw() +

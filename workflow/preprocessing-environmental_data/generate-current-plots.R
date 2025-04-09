@@ -6,11 +6,11 @@
 # URL		:
 # Aim    	:
 # Input   : Dataframe data, vector of Strings var_vec,
-#           vector of Strings name_vec, vector of Strings y_vec, String save_loc
+#           vector of Strings name_vec, String save_loc
 # Output  : Plots saved to "./R_output/plots/"
 # ===============================================================================
 
-generate.current.plots <- function(data, var_vec, name_vec, y_vec, save_loc) {
+generate.current.plots <- function(data, var_vec, name_vec, save_loc) {
   library(ggplot2)
 
   for (i in 1:length(var_vec)) {
