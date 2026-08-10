@@ -9,25 +9,46 @@
 # Output  : Dataframe of .csv files in the input folder that hold data from TCM files
 # ================================================================================
 
-load.tcm.data <- function(folder, file_pattern, col_names) {
+load.tcm.data <- function(
+  folder,
+  file_pattern,
+  col_names,
+  rewrite_sensor = FALSE
+) {
+  require(dplyr)
+
   # List all files in child directories that end in the file_pattern
-  temp <- list.files(path = folder, pattern = file_pattern, recursive = TRUE,
-                     ignore.case = TRUE, full.names = TRUE)
+  temp <- list.files(
+    path = folder,
+    pattern = file_pattern,
+    recursive = TRUE,
+    ignore.case = TRUE,
+    full.names = TRUE
+  )
   # Read all files
   myfiles <- lapply(temp, read.csv)
 
   # Loop to fill in serial and sensor ID from file name
   for (i in 1:length(temp)) {
-    ## Note: For TCM (serial ID is in the file name)
-    # Get serial ID
-    sensor.id <- gsub(".*_(.*)_\\(.*", "\\1", temp[i])
-    # Put serial ID in column
-    myfiles[[i]]$Sensor <- sensor.id
-
     # Get serial ID
     serial.id <- gsub("^.*?/([0-9]{7})_.*$", "\\1", temp[i])
     # Put serial ID in column
     myfiles[[i]]$Serial <- serial.id
+  }
+
+  if (rewrite_sensor == TRUE) {
+    for (i in 1:length(temp)) {
+      sensor.id <- gsub(".*_(TCM[0-9]+)_.*", "\\1", temp[i])
+      myfiles[[i]]$Sensor <- sensor.id
+    }
+  } else {
+    ## Note: For TCM (serial ID is in the file name)
+    for (i in 1:length(temp)) {
+      # Get sensor ID
+      sensor.id <- gsub(".*_(.*)_\\(.*", "\\1", temp[i])
+      # Put sensor ID in column
+      myfiles[[i]]$Sensor <- sensor.id
+    }
   }
 
   # Bind data
@@ -45,4 +66,3 @@ load.tcm.data <- function(folder, file_pattern, col_names) {
 
   return(TCM_data)
 }
-

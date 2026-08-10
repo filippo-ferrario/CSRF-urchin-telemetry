@@ -13,7 +13,7 @@
 # ===============================================================================
 
 generate.current.plots.zoom <- function(data, roundvar_vec, name_vec, time_vec, save_loc) {
-  library(ggplot2)
+  require(ggplot2)
 
   for (i in 1:length(roundvar_vec)) {
     # Zoom in on portion of time (meaningful for tidal variation?)

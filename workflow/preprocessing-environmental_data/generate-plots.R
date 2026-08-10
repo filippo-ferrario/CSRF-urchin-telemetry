@@ -11,7 +11,7 @@
 # ===============================================================================
 
 generate.plots <- function(data, var_vec, name_vec, y_vec, save_loc) {
-  library(ggplot2)
+  require(ggplot2)
 
   for (i in 1:length(var_vec)) {
     data %>%

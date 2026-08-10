@@ -11,6 +11,8 @@
 # ================================================================================
 
 load.star.data <- function(folder) {
+  require(tibble)
+
   temp <- list.files(path = folder, pattern = "\\_exported.csv", recursive = TRUE,
                      ignore.case = TRUE, full.names = TRUE)
 
