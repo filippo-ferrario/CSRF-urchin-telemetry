@@ -6,6 +6,7 @@
 # URL		: 
 # Aim    	: Organize and keep track of script used.
 # 			  Version 2 is the subset of 00-Main-local (from Filippo Ferrario's laptop) that contains only scripts relevant to the photogrammetry processing
+# 			 paths in the source() have been adapted to the Project folder folder-structure.	
 # ===============================================================================
 
 
@@ -67,7 +68,7 @@ library(magick)
 # input: data/photogrammetry/BIC-PIL-image_sync.csv
 # 		 data/photogrammetry/BIC-BAL-image_sync.csv
 # 		+ image files on HDD
-source('./R_workflow/imagery_sync-BIC.R') ; rm(list=ls())
+source('workflow/imagery_sync-BIC.R') ; rm(list=ls())
 # output: output/datasets/photogrammetry/BIC-PIL-image_sync-esitmated_ref-check03.csv
 # 		  output/datasets/photogrammetry/BIC-PIL-paired_synced.csv	
 # 		  output/datasets/photogrammetry/BIC-BAL-image_sync-esitmated_ref.csv
@@ -78,14 +79,14 @@ source('./R_workflow/imagery_sync-BIC.R') ; rm(list=ls())
 # input:
 # 		imagery/QC-BIC-mosaicing/BAL/sub-2/subsample_list.csv
 #		output/datasets/photogrammetry/BIC-PIL-paired_synced.csv	
-# source('./R_workflow/BIC-BAL-extra_pics.R') ; rm(list=ls()) # select pics to add to BIC-BAL metashape project
+# source('workflow/BIC-BAL-extra_pics.R') ; rm(list=ls()) # select pics to add to BIC-BAL metashape project
 # output:
 # 		image_processing/pics-color_corrected/gimp/BIC-BAL/complement_sub2/README.txt
 
 # inputs:
 # 		imagery/QC-BIC-mosaicing/PIL/sub-2/subsample_list.csv
 # 		datasets/photogrammetry/BIC-PIL-paired_synced.csv
-# source('./R_workflow/BIC-PIL-extra_pics.R');   rm(list=ls()) # select pics to add to BIC-BAL metashape project
+# source('workflow/BIC-PIL-extra_pics.R');   rm(list=ls()) # select pics to add to BIC-BAL metashape project
 # outputs: see note at top of {}
 }
 
@@ -98,7 +99,7 @@ source('./R_workflow/imagery_sync-BIC.R') ; rm(list=ls())
 # 		output/datasets/photogrammetry/QC-targets_receivers_coordinates_depth.csv  [this file use produced on the S:/]
 # 		data/photogrammetry/BIC-PIL-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BIC-PIL-paired_synced.csv
-source('./R_workflow/imagery_georef-BIC-PIL.R'); rm(list=ls())
+source('workflow/imagery_georef-BIC-PIL.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-BIC-PIL.csv (+ dictionary)
 
@@ -109,7 +110,7 @@ source('./R_workflow/imagery_georef-BIC-PIL.R'); rm(list=ls())
 # 		data/photogrammetry/gps bal nov geo-gps.csv 
 # 		data/photogrammetry/BIC-BAL-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BIC-BAL-paired_synced.csv' 
-source('./R_workflow/imagery_georef-BIC-BAL.R'); rm(list=ls())
+source('workflow/imagery_georef-BIC-BAL.R'); rm(list=ls())
 # output: 
 # 		output/datasets/photogrammetry/georeferenced_images-BIC-BAL.csv + dictionary
  		
@@ -127,7 +128,7 @@ source('./R_workflow/imagery_georef-BIC-BAL.R'); rm(list=ls())
 # 		data/photogrammetry/IAL-NE-image_sync.csv
 # 		data/photogrammetry/IAL-SW-image_sync.csv
 # 		data/photogrammetry/IAL-SW-202207-image_sync.csv
-source('./R_workflow/imagery_sync-IAL.R'); rm(list=ls())
+source('workflow/imagery_sync-IAL.R'); rm(list=ls())
 # output: 
 # 		output/datasets/photogrammetry/IAL-NE-image_sync-esitmated_ref.csv
 # 		output/datasets/photogrammetry/IAL-NE-paired_synced.csv
@@ -323,7 +324,7 @@ source('R_workflow/imagery_georef-QD-MAR_2-offset.R'); rm(list=ls())
 # 		data/tide_tables/predictions_03000_Île Bicquette_2022-08-03.csv 
 # 		data/tide_tables/predictions_03140_Île aux Lièvres_2022-10-05.csv 
 # 		data/tide_tables/predictions_03140_Île aux Lièvres_2022-07-05.csv
-source('./R_workflow/scalebars.R'); rm(list=ls())
+source('workflow/scalebars.R'); rm(list=ls())
 # output: output/datasets/photogrammetry/scalebars.csv (+ dictionary)
 
 
