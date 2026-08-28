@@ -65,33 +65,34 @@ library(geosphere)
 
 # Synchronize and subsample
 # --------------------------
+{ # ATTENTION: This step requires access to Imagery files. Only run if this is available
+# # ATTENTION!!! 
+# # Synchronisation Scripts refers to images on HDD using absolute paths: checks script before running!)
 
-# ATTENTION!!! 
-# Synchronisation Scripts refers to images on HDD using absolute paths: checks script before running!)
+# # input: data/photogrammetry/BIC-PIL-image_sync.csv
+# # 		 data/photogrammetry/BIC-BAL-image_sync.csv
+# # 		+ image files on HDD
+# source('workflow/preprocessing-photogrammetry/imagery_sync-BIC.R') ; rm(list=ls())
+# # output: output/datasets/photogrammetry/BIC-PIL-image_sync-esitmated_ref-check03.csv
+# # 		  output/datasets/photogrammetry/BIC-PIL-paired_synced.csv	
+# # 		  output/datasets/photogrammetry/BIC-BAL-image_sync-esitmated_ref.csv
+# # 		  output/datasets/photogrammetry/BIC-BAL-paired_synced.csv
+# # 		+ image files on HDD
 
-# input: data/photogrammetry/BIC-PIL-image_sync.csv
-# 		 data/photogrammetry/BIC-BAL-image_sync.csv
-# 		+ image files on HDD
-source('workflow/preprocessing-photogrammetry/imagery_sync-BIC.R') ; rm(list=ls())
-# output: output/datasets/photogrammetry/BIC-PIL-image_sync-esitmated_ref-check03.csv
-# 		  output/datasets/photogrammetry/BIC-PIL-paired_synced.csv	
-# 		  output/datasets/photogrammetry/BIC-BAL-image_sync-esitmated_ref.csv
-# 		  output/datasets/photogrammetry/BIC-BAL-paired_synced.csv
-# 		+ image files on HDD
+# { # 2026-08-17 FF: these scripts refers to a folder hierarchy that has been adoipted in the early stages. outputs are presents in image_processing subfolders but not at paths specified in the scripts.
+# # input:
+# # 		imagery/QC-BIC-mosaicing/BAL/sub-2/subsample_list.csv
+# #		output/datasets/photogrammetry/BIC-PIL-paired_synced.csv	
+# # source('workflow/preprocessing-photogrammetry/BIC-BAL-extra_pics.R') ; rm(list=ls()) # select pics to add to BIC-BAL metashape project
+# # output:
+# # 		image_processing/pics-color_corrected/gimp/BIC-BAL/complement_sub2/README.txt
 
-{ # 2026-08-17 FF: these scripts refers to a folder hierarchy that has been adoipted in the early stages. outputs are presents in image_processing subfolders but not at paths specified in the scripts.
-# input:
-# 		imagery/QC-BIC-mosaicing/BAL/sub-2/subsample_list.csv
-#		output/datasets/photogrammetry/BIC-PIL-paired_synced.csv	
-# source('workflow/preprocessing-photogrammetry/BIC-BAL-extra_pics.R') ; rm(list=ls()) # select pics to add to BIC-BAL metashape project
-# output:
-# 		image_processing/pics-color_corrected/gimp/BIC-BAL/complement_sub2/README.txt
-
-# inputs:
-# 		imagery/QC-BIC-mosaicing/PIL/sub-2/subsample_list.csv
-# 		datasets/photogrammetry/BIC-PIL-paired_synced.csv
-# source('workflow/preprocessing-photogrammetry/BIC-PIL-extra_pics.R');   rm(list=ls()) # select pics to add to BIC-BAL metashape project
-# outputs: see note at top of {}
+# # inputs:
+# # 		imagery/QC-BIC-mosaicing/PIL/sub-2/subsample_list.csv
+# # 		datasets/photogrammetry/BIC-PIL-paired_synced.csv
+# # source('workflow/preprocessing-photogrammetry/BIC-PIL-extra_pics.R');   rm(list=ls()) # select pics to add to BIC-BAL metashape project
+# # outputs: see note at top of {}
+# }
 }
 
 # Georeference images
@@ -124,23 +125,23 @@ source('workflow/preprocessing-photogrammetry/imagery_georef-BIC-BAL.R'); rm(lis
 
 # Synchronize and subsample
 # --------------------------
+{ # ATTENTION: This step requires access to Imagery files. Only run if this is available
+# # ATTENTION!!! 
+# # Synchronisation Scripts refers to images on HDD using absolute paths: checks script before running!)
 
-# ATTENTION!!! 
-# Synchronisation Scripts refers to images on HDD using absolute paths: checks script before running!)
-
-# input:
-# 		data/photogrammetry/IAL-NE-image_sync.csv
-# 		data/photogrammetry/IAL-SW-image_sync.csv
-# 		data/photogrammetry/IAL-SW-202207-image_sync.csv
-source('workflow/preprocessing-photogrammetry/imagery_sync-IAL.R'); rm(list=ls())
-# output: 
-# 		output/datasets/photogrammetry/IAL-NE-image_sync-esitmated_ref.csv
-# 		output/datasets/photogrammetry/IAL-NE-paired_synced.csv
-# 		output/datasets/photogrammetry/IAL-SW-image_sync-esitmated_ref.csv
-# 		output/datasets/photogrammetry/IAL-SW-paired_synced.csv
-# 		output/datasets/photogrammetry/IAL-SW-202207-image_sync-esitmated_ref.csv
-# 		output/datasets/photogrammetry/IAL-SW-202207-paired_synced.csv
-
+# # input:
+# # 		data/photogrammetry/IAL-NE-image_sync.csv
+# # 		data/photogrammetry/IAL-SW-image_sync.csv
+# # 		data/photogrammetry/IAL-SW-202207-image_sync.csv
+# source('workflow/preprocessing-photogrammetry/imagery_sync-IAL.R'); rm(list=ls())
+# # output: 
+# # 		output/datasets/photogrammetry/IAL-NE-image_sync-esitmated_ref.csv
+# # 		output/datasets/photogrammetry/IAL-NE-paired_synced.csv
+# # 		output/datasets/photogrammetry/IAL-SW-image_sync-esitmated_ref.csv
+# # 		output/datasets/photogrammetry/IAL-SW-paired_synced.csv
+# # 		output/datasets/photogrammetry/IAL-SW-202207-image_sync-esitmated_ref.csv
+# # 		output/datasets/photogrammetry/IAL-SW-202207-paired_synced.csv
+}
 
 # Georeference images
 # ------------------------
@@ -174,20 +175,20 @@ source('R_workflow/imagery_georef-IAL-SW.R'); rm(list=ls())
 
 # Synchronize and subsample
 # --------------------------
+{ # ATTENTION: This step requires access to Imagery files. Only run if this is available
+# # ATTENTION!!! 
+# # Synchronisation Scripts refers to images on HDD using absolute paths: checks script before running!)
 
-# ATTENTION!!! 
-# Synchronisation Scripts refers to images on HDD using absolute paths: checks script before running!)
-
-# input:
-# 		data/photogrammety/PR-TUG_1-image_sync.csv
-# 		data/photogrammety/PR-TUG_2-image_sync.csv
-source('R_workflow/imagery_sync-PRT.R'); rm(list=ls())
-# output:
-# 		output/datasets/photogrammetry/PR-TUG_1-image_sync-esitmated_ref.csv
-# 		output/datasets/photogrammetry/PR-TUG_1-paired_synced.csv
-# 		output/datasets/photogrammetry/PR-TUG_2-image_sync-esitmated_ref.csv
-# 		output/datasets/photogrammetry/PR-TUG_2-paired_synced.csv
-
+# # input:
+# # 		data/photogrammety/PR-TUG_1-image_sync.csv
+# # 		data/photogrammety/PR-TUG_2-image_sync.csv
+# source('R_workflow/imagery_sync-PRT.R'); rm(list=ls())
+# # output:
+# # 		output/datasets/photogrammetry/PR-TUG_1-image_sync-esitmated_ref.csv
+# # 		output/datasets/photogrammetry/PR-TUG_1-paired_synced.csv
+# # 		output/datasets/photogrammetry/PR-TUG_2-image_sync-esitmated_ref.csv
+# # 		output/datasets/photogrammetry/PR-TUG_2-paired_synced.csv
+}
 
 # Georeference images
 # ------------------------
@@ -241,20 +242,20 @@ source('R_workflow/imagery_georef-PR-TUG_2-offset.R'); rm(list=ls())
 
 # Synchronize and subsample
 # --------------------------
+{ # ATTENTION: This step requires access to Imagery files. Only run if this is available
+# # ATTENTION!!! 
+# # Synchronisation Scripts refers to images on HDD using absolute paths: checks script before running!)
 
-# ATTENTION!!! 
-# Synchronisation Scripts refers to images on HDD using absolute paths: checks script before running!)
-
-# input:
-# 		data/photogrammety/QD-MAR_1-image_sync.csv
-# 		data/photogrammety/QD-MAR_2-image_sync.csv
-source('R_workflow/imagery_sync-MAR.R'); rm(list=ls())
-# output:
-# 		output/datasets/photogrammetry/QD-MAR_1-image_sync-esitmated_ref.csv
-# 		output/datasets/photogrammetry/QD-MAR_1-paired_synced.csv
-# 		output/datasets/photogrammetry/QD-MAR_2-image_sync-esitmated_ref.csv
-# 		output/datasets/photogrammetry/QD-MAR_2-paired_synced.csv
-
+# # input:
+# # 		data/photogrammety/QD-MAR_1-image_sync.csv
+# # 		data/photogrammety/QD-MAR_2-image_sync.csv
+# source('R_workflow/imagery_sync-MAR.R'); rm(list=ls())
+# # output:
+# # 		output/datasets/photogrammetry/QD-MAR_1-image_sync-esitmated_ref.csv
+# # 		output/datasets/photogrammetry/QD-MAR_1-paired_synced.csv
+# # 		output/datasets/photogrammetry/QD-MAR_2-image_sync-esitmated_ref.csv
+# # 		output/datasets/photogrammetry/QD-MAR_2-paired_synced.csv
+}
 
 # Adjusted depths of targets in BC
 # ---------------------------------------------------------------
