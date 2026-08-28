@@ -151,9 +151,9 @@ source('workflow/preprocessing-photogrammetry/imagery_georef-BIC-BAL.R'); rm(lis
 # ```````````````````````
 # input: 
 # 		data/photogrammetry/IAL-NE-pic2georef-main_camera.csv
-# 		output/datasets/photogrammetry/QC-targets_receivers_coordinates_depth.csv
+# 		output/datasets/photogrammetry/QC-targets_receivers_coordinates_depth.csv [this file use produced on the S:/]
 # 		output/datasets/photogrammetry/IAL-NE-paired_synced.csv
-source('R_workflow/imagery_georef-IAL-NE.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-IAL-NE.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-IAL-NE.csv (+dictionary)
 
@@ -162,9 +162,9 @@ source('R_workflow/imagery_georef-IAL-NE.R'); rm(list=ls())
 # ```````````````````````
 # input: 
 # 		data/photogrammetry/IAL-SW-pic2georef-main_camera.csv
-# 		output/datasets/photogrammetry/QC-targets_receivers_coordinates_depth.csv
+# 		output/datasets/photogrammetry/QC-targets_receivers_coordinates_depth.csv [this file use produced on the S:/]
 # 		output/datasets/photogrammetry/IAL-SW-paired_synced.csv
-source('R_workflow/imagery_georef-IAL-SW.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-IAL-SW.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-IAL-SW.csv (+dictionary)
 
@@ -182,7 +182,7 @@ source('R_workflow/imagery_georef-IAL-SW.R'); rm(list=ls())
 # # input:
 # # 		data/photogrammety/PR-TUG_1-image_sync.csv
 # # 		data/photogrammety/PR-TUG_2-image_sync.csv
-# source('R_workflow/imagery_sync-PRT.R'); rm(list=ls())
+# source('workflow/preprocessing-photogrammetry/imagery_sync-PRT.R'); rm(list=ls())
 # # output:
 # # 		output/datasets/photogrammetry/PR-TUG_1-image_sync-esitmated_ref.csv
 # # 		output/datasets/photogrammetry/PR-TUG_1-paired_synced.csv
@@ -199,7 +199,7 @@ source('R_workflow/imagery_georef-IAL-SW.R'); rm(list=ls())
 # 		data/photogrammety/Deployment_Telemetry_HR2_BC2023.csv
 # 		data/photogrammety/PR-Tug_1-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/PR-TUG_1-paired_synced.csv
-source('R_workflow/imagery_georef-PR-TUG_1.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-PR-TUG_1.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-PR-TUG_1.csv (+ dictionary)
 
@@ -210,7 +210,7 @@ source('R_workflow/imagery_georef-PR-TUG_1.R'); rm(list=ls())
 # 		data/photogrammety/Deployment_Telemetry_HR2_BC2023.csv
 # 		data/photogrammety/PR-Tug_1-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/PR-TUG_1-paired_synced.csv
-source('R_workflow/imagery_georef-PR-TUG_1-offset.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-PR-TUG_1-offset.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-PR-TUG_1-offset.csv (+ dictionary)
 
@@ -221,7 +221,7 @@ source('R_workflow/imagery_georef-PR-TUG_1-offset.R'); rm(list=ls())
 # 		data/photogrammety/Deployment_Telemetry_HR2_BC2023.csv
 # 		data/photogrammety/PR-Tug_2-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/PR-TUG_2-paired_synced.csv
-source('R_workflow/imagery_georef-PR-TUG_2.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-PR-TUG_2.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-PR-TUG_2.csv (+ dictionary)
 
@@ -232,7 +232,7 @@ source('R_workflow/imagery_georef-PR-TUG_2.R'); rm(list=ls())
 # 		data/photogrammety/Deployment_Telemetry_HR2_BC2023.csv
 # 		data/photogrammety/PR-Tug_2-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/PR-TUG_2-paired_synced.csv
-source('R_workflow/imagery_georef-PR-TUG_2-offset.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-PR-TUG_2-offset.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-PR-TUG_2-offset.csv (+ dictionary)
 
@@ -249,7 +249,7 @@ source('R_workflow/imagery_georef-PR-TUG_2-offset.R'); rm(list=ls())
 # # input:
 # # 		data/photogrammety/QD-MAR_1-image_sync.csv
 # # 		data/photogrammety/QD-MAR_2-image_sync.csv
-# source('R_workflow/imagery_sync-MAR.R'); rm(list=ls())
+# source('workflow/preprocessing-photogrammetry/imagery_sync-MAR.R'); rm(list=ls())
 # # output:
 # # 		output/datasets/photogrammetry/QD-MAR_1-image_sync-esitmated_ref.csv
 # # 		output/datasets/photogrammetry/QD-MAR_1-paired_synced.csv
@@ -263,7 +263,7 @@ source('R_workflow/imagery_georef-PR-TUG_2-offset.R'); rm(list=ls())
 # 		data/photogrammetry/targets_deployment.csv
 # 		data/tide_tables/predictions_09350_Casey Cove_2023-05-23-tugwell.csv
 # 		data/tide_tables/predictions_08038_Whaletown_2023-05-31-marina.csv
-source('R_workflow/BC-site_data-targets_depths.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/BC-site_data-targets_depths.R'); rm(list=ls())
 # output: 
 # 		output/datasets/photogrammetry/BC-targets_depth.csv (+ dictionary)
 
@@ -279,7 +279,7 @@ source('R_workflow/BC-site_data-targets_depths.R'); rm(list=ls())
 # 		data/photogrammety/QD-MAR_1-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BC-targets_depth.csv
 # 		output/datasets/photogrammetry/QD-MAR_1-paired_synced.csv
-source('R_workflow/imagery_georef-QD-MAR_1.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_1.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-QD-MAR_1.csv (+ dictionary)
 
@@ -290,7 +290,7 @@ source('R_workflow/imagery_georef-QD-MAR_1.R'); rm(list=ls())
 # 		data/photogrammety/QD-MAR_1-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BC-targets_depth.csv
 # 		output/datasets/photogrammetry/QD-MAR_1-paired_synced.csv
-source('R_workflow/imagery_georef-QD-MAR_1-offset.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_1-offset.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-QD-MAR_1-offset.csv (+ dictionary)
 
@@ -302,7 +302,7 @@ source('R_workflow/imagery_georef-QD-MAR_1-offset.R'); rm(list=ls())
 # 		data/photogrammety/QD-MAR_2-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BC-targets_depth.csv
 # 		output/datasets/photogrammetry/QD-MAR_2-paired_synced.csv
-source('R_workflow/imagery_georef-QD-MAR_2.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_2.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-QD-MAR_2.csv (+ dictionary)
 
@@ -314,7 +314,7 @@ source('R_workflow/imagery_georef-QD-MAR_2.R'); rm(list=ls())
 # 		data/photogrammety/QD-MAR_2-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BC-targets_depth.csv
 # 		output/datasets/photogrammetry/QD-MAR_2-paired_synced.csv
-source('R_workflow/imagery_georef-QD-MAR_2-offset.R'); rm(list=ls())
+source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_2-offset.R'); rm(list=ls())
 # output:
 # 		output/datasets/photogrammetry/georeferenced_images-QD-MAR_2-offset.csv (+ dictionary)
 
