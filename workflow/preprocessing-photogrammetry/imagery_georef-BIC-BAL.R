@@ -30,7 +30,7 @@ ref_pics<-read.csv('data/photogrammetry/BIC-BAL-pic2georef-main_camera.csv', na.
 pics<-read.csv('output/datasets/photogrammetry/BIC-BAL-paired_synced.csv', na.strings = "")
 
 # Check that GPS point used in this script (i.e., stored on quick and dirty temporary file the day they were taken in the field) are the same of those recorded in the final dataset of positions. 
-Sgps<-read.csv('./data/QC-targets_receivers_coordinates_depth.csv') %>%
+Sgps<-read.csv('output/datasets/photogrammetry/QC-targets_receivers_coordinates_depth.csv') %>%
 		filter(site=='BIC-BAL', receiver_id!='Ref') %>%
 		select(xy_grid, lat_target,lon_target) %>%
 		st_as_sf(.,coords=c('lon_target','lat_target')) %>%
