@@ -35,7 +35,7 @@ checkNinst(pk=c(
 
 renv::install('filippo-ferrario/ActioneeR')
 renv::install('filippo-ferrario/FielderInTheLab')
-
+renv::install('geosphere@1.5-18')
 
 # ==================================
 # Load packages 
