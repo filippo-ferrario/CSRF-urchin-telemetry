@@ -13,7 +13,7 @@
 # load packages
 # ============
 
-library(ActioneeR)
+# library(ActioneeR)
 
 # initiate_sync('data/photogrammety/QD-MAR_1-image_sync.csv')
 # initiate_sync('data/photogrammety/QD-MAR_2-image_sync.csv')

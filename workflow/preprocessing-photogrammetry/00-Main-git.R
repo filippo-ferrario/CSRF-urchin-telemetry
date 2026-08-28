@@ -33,9 +33,9 @@ checkNinst(pk=c(
 # devtools::install_github('filippo-ferrario/ActioneeR', ref='HEAD')
 # devtools::install_github('filippo-ferrario/FielderInTheLab', ref='HEAD')
 
-renv::install('filippo-ferrario/ActioneeR')
-renv::install('filippo-ferrario/FielderInTheLab')
-renv::install('geosphere@1.5-18')
+# renv::install('filippo-ferrario/ActioneeR')
+# renv::install('filippo-ferrario/FielderInTheLab')
+# renv::install('geosphere@1.5-18')
 
 # ==================================
 # Load packages 
@@ -46,10 +46,7 @@ library(ActioneeR)
 library(sf)
 library(lwgeom) 
 library(geosphere)
-library(ezknitr)
-library(foreach)
-library(doParallel)
-library(magick)
+# library(ezknitr)
 
 
 # ============================================================
