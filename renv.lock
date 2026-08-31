@@ -40,15 +40,15 @@
     },
     "FielderInTheLab": {
       "Package": "FielderInTheLab",
-      "Version": "0.1",
+      "Version": "0.1.1",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "filippo-ferrario",
       "RemoteRepo": "FielderInTheLab",
       "RemoteRef": "main",
-      "RemoteSha": "186f0008ad0120478d9d896587f56a2c5c188fc8",
-      "Hash": "6acdbdbf72b93f5f6033d215066f7daa"
+      "RemoteSha": "2cc97fbd52315533c3e67c84a7999131fd879398",
+      "Hash": "960dcce9d87a06f40e57b95bc89cbfbc"
     },
     "KernSmooth": {
       "Package": "KernSmooth",
