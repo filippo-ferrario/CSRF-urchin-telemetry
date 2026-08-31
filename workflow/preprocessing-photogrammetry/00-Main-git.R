@@ -39,7 +39,7 @@ checkNinst(pk=c(
 # devtools::install_github('filippo-ferrario/FielderInTheLab', ref='HEAD')
 
 # renv::install('filippo-ferrario/ActioneeR')
-# renv::install('filippo-ferrario/FielderInTheLab')
+renv::install('filippo-ferrario/FielderInTheLab@posix')
 # renv::install('geosphere@1.5-18')
 
 # ==================================
@@ -275,8 +275,8 @@ source('workflow/preprocessing-photogrammetry/BC-site_data-targets_depths.R'); r
 # Site: MAR-1
 # ```````````````````````
 # input:
-# 		data/photogrammety/Deployment_Telemetry_HR2_BC2023.csv
-# 		data/photogrammety/QD-MAR_1-pic2georef-main_camera.csv
+# 		data/photogrammetry/Deployment_Telemetry_HR2_BC2023.csv
+# 		data/photogrammetry/QD-MAR_1-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BC-targets_depth.csv
 # 		output/datasets/photogrammetry/QD-MAR_1-paired_synced.csv
 source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_1.R'); rm(list=ls())
@@ -286,8 +286,8 @@ source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_1.R'); rm(li
 # Site: MAR-1 with offsets per cameras on the wing
 # `````````````````````````````````````````````````
 # input:
-# 		data/photogrammety/Deployment_Telemetry_HR2_BC2023.csv
-# 		data/photogrammety/QD-MAR_1-pic2georef-main_camera.csv
+# 		data/photogrammetry/Deployment_Telemetry_HR2_BC2023.csv
+# 		data/photogrammetry/QD-MAR_1-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BC-targets_depth.csv
 # 		output/datasets/photogrammetry/QD-MAR_1-paired_synced.csv
 source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_1-offset.R'); rm(list=ls())
@@ -298,8 +298,8 @@ source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_1-offset.R')
 # Site: MAR-2
 # ```````````````````````
 # input:
-# 		data/photogrammety/Deployment_Telemetry_HR2_BC2023.csv
-# 		data/photogrammety/QD-MAR_2-pic2georef-main_camera.csv
+# 		data/photogrammetry/Deployment_Telemetry_HR2_BC2023.csv
+# 		data/photogrammetry/QD-MAR_2-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BC-targets_depth.csv
 # 		output/datasets/photogrammetry/QD-MAR_2-paired_synced.csv
 source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_2.R'); rm(list=ls())
@@ -310,8 +310,8 @@ source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_2.R'); rm(li
 # Site: MAR-2 with offsets per cameras on the wing
 # `````````````````````````````````````````````````
 # input:
-# 		data/photogrammety/Deployment_Telemetry_HR2_BC2023.csv
-# 		data/photogrammety/QD-MAR_2-pic2georef-main_camera.csv
+# 		data/photogrammetry/Deployment_Telemetry_HR2_BC2023.csv
+# 		data/photogrammetry/QD-MAR_2-pic2georef-main_camera.csv
 # 		output/datasets/photogrammetry/BC-targets_depth.csv
 # 		output/datasets/photogrammetry/QD-MAR_2-paired_synced.csv
 source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_2-offset.R'); rm(list=ls())

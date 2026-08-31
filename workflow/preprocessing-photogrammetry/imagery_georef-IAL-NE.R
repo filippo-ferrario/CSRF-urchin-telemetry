@@ -380,7 +380,7 @@ plot(st_geometry(line_30_60),add=T)
 
 picsList_coords_df %>%
 		filter(grepl(.$leg,pattern='-0-30')) %>%
-		split(f=.$leg) %>%	names()
+		split(f=.$leg) %>%	#names()
 		lapply(function(x){ #browser()
 			pt_1<-st_multipoint(cbind(x[x$step==1,'X'],x[x$step==1,'Y']))
 			pt_2<-st_multipoint(cbind(x[x$step==(max(x$step)-1),'X'],x[x$step==(max(x$step)-1),'Y']))

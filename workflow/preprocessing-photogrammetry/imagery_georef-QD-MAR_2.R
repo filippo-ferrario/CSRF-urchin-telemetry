@@ -25,8 +25,8 @@
 # Load data
 # ====================
 
-gps<-read.csv('data/photogrammety/Deployment_Telemetry_HR2_BC2023.csv')
-ref_pics<-read.csv('data/photogrammety/QD-MAR_2-pic2georef-main_camera.csv', na.strings = "")
+gps<-read.csv('data/photogrammetry/Deployment_Telemetry_HR2_BC2023.csv')
+ref_pics<-read.csv('data/photogrammetry/QD-MAR_2-pic2georef-main_camera.csv', na.strings = "")
 depths<-read.csv('output/datasets/photogrammetry/BC-targets_depth.csv', na.strings = "")
 pics<-read.csv('output/datasets/photogrammetry/QD-MAR_2-paired_synced.csv', na.strings = "")
 
