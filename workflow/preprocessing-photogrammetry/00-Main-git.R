@@ -39,7 +39,7 @@ checkNinst(pk=c(
 # devtools::install_github('filippo-ferrario/FielderInTheLab', ref='HEAD')
 
 # renv::install('filippo-ferrario/ActioneeR')
-renv::install('filippo-ferrario/FielderInTheLab@posix')
+# renv::install('filippo-ferrario/FielderInTheLab')
 # renv::install('geosphere@1.5-18')
 
 # ==================================
@@ -329,8 +329,10 @@ source('workflow/preprocessing-photogrammetry/imagery_georef-QD-MAR_2-offset.R')
 # 		data/tide_tables/predictions_03000_Île Bicquette_2022-08-03.csv 
 # 		data/tide_tables/predictions_03140_Île aux Lièvres_2022-10-05.csv 
 # 		data/tide_tables/predictions_03140_Île aux Lièvres_2022-07-05.csv
+# 		data/tide_tables/predictions_09350_Casey Cove_2023-05-23-tugwell.csv
+# 		data/tide_tables/predictions_08038_Whaletown_2023-05-31-marina.csv
 source('workflow/preprocessing-photogrammetry/scalebars.R'); rm(list=ls())
-# output: output/datasets/photogrammetry/scalebars.csv (+ dictionary)
+# output: 
 
 
 

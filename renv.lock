@@ -47,8 +47,8 @@
       "RemoteUsername": "filippo-ferrario",
       "RemoteRepo": "FielderInTheLab",
       "RemoteRef": "main",
-      "RemoteSha": "2cc97fbd52315533c3e67c84a7999131fd879398",
-      "Hash": "960dcce9d87a06f40e57b95bc89cbfbc"
+      "RemoteSha": "7a823d6d37bd6e55e63544dd1a9b3dc92358faf4",
+      "Hash": "64d8348c27b45c4c672b885743f9a010"
     },
     "KernSmooth": {
       "Package": "KernSmooth",
