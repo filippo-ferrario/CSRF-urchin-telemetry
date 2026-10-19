@@ -12,7 +12,7 @@
 
 create_currdataset <- function(data, year) {
   # Load TCM current data
-  source(here("workflow/preprocessing-environmental_data/load-TCM.R"))
+  source(here("workflow/preprocessing-environmental_data/function-load-TCM.R"))
   temp1 <- load.tcm.data(
     here(data[1]),
     "\\_Current.csv",
@@ -30,7 +30,7 @@ create_currdataset <- function(data, year) {
 
   # Initial clean - merge with metadata, lubridate date/time, exclude based on deployment/recovery time
   source(here(
-    "workflow/preprocessing-environmental_data/clean-environmental.R"
+    "workflow/preprocessing-environmental_data/function-clean-environmental.R"
   ))
   TCM_current <- initial.clean(TCM_current, metadata, year = year)
 

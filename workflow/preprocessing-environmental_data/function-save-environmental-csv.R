@@ -52,6 +52,12 @@ create_site_csv <- function(
   # Save as csv
   # Folder to save CSVs
   output_dir <- "output/datasets/environmental/"
+  ifelse(
+    !dir.exists("output/datasets/environmental"),
+    dir.create("output/datasets/environmental"),
+    "Directory exists"
+  )
+
   for (nm in names(combined)) {
     write.csv(
       combined[[nm]],

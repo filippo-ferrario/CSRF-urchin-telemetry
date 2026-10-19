@@ -4,8 +4,7 @@
 # Date   	:  [dd-mm-yyyy] 14-11-2025
 # Version	: 1
 # URL		:
-# Aim    	: To create CSV files of environmental data - ONLY NEED TO RUN SECTION
-#           #### Final Environmental Datasets
+# Aim    	: Create CSV files of environmental data
 # ===============================================================================
 
 #### Final Environmental Datasets ####
@@ -30,7 +29,7 @@ qc_sal <- lapply(qc[[2]], function(tbl) average_samedt(tbl, col_name = "Sal"))
 
 #### Current ####
 source(here(
-  "workflow/preprocessing-environmental_data/create-current-dataset.R"
+  "workflow/preprocessing-environmental_data/function-create-current-dataset.R"
 ))
 bc_current <- create_currdataset(
   c(
@@ -63,18 +62,24 @@ cols_to_keep <- c(
 )
 
 source(here(
-  "workflow/preprocessing-environmental_data/save-environmental-csv.R"
+  "workflow/preprocessing-environmental_data/function-save-environmental-csv.R"
 ))
 combined_bc <- create_site_csv(
   curr = bc_current_rolled,
   temp = bc_temp,
   sal = bc_sal,
-  cols_to_keep = cols_to_keep
+  cols_to_keep = cols_to_keep,
+  lat_col = "Lat",
+  long_col = "Long",
+  serial_col = "Serial"
 )
 
 combined_qc <- create_site_csv(
   curr = qc_current_rolled,
   temp = qc_temp,
   sal = qc_sal,
-  cols_to_keep = cols_to_keep
+  cols_to_keep = cols_to_keep,
+  lat_col = "Lat",
+  long_col = "Long",
+  serial_col = "Sensor"
 )

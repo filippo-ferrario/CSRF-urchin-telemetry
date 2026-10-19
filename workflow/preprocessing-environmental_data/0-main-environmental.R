@@ -6,7 +6,7 @@
 # URL		  :
 # Aim    	: Organize the process of visualizing and prepping the environmental
 #           dataset. To create CSV files of environmental data - ONLY NEED TO
-#           RUN SECTION #### Final Environmental Datasets
+#           RUN SECTION 'Create final environmental datasets for both BC and QC'
 # ===============================================================================
 
 # =========================
@@ -20,9 +20,6 @@ library(zoo)
 library(ggplot2)
 library(circular)
 library(purrr)
-
-library(ezknitr)
-
 
 # =========================
 # Import Quebec data and preliminary plots for investigation
@@ -155,3 +152,26 @@ source(
 # output: "output/plots/BC_TCMCurr_rollmean_3hours_week.png"
 # output: "output/plots/BC_TCMCurr_rollmean_6hours.png"
 # output: "output/plots/BC_TCMCurr_rollmean_6hours_2days.png"
+
+# =========================
+# Create final environmental datasets for both BC and QC
+# =========================
+
+# input: data/raw_data_downloads_bic_2022/
+# input: data/raw_data_downloads_cacouna_2022/
+# input: data/metadata_sensors_QC2022.csv
+# input: data/raw_data_downloads_prince_rupert_2023/
+# input: data/raw_data_downloads_quadra_2023/
+# input: data/metadata_sensors_BC2023.csv
+source(
+  "./workflow/preprocessing-environmental_data/create_final_environmental_datasets.R"
+)
+
+# output: "output/datasets/environmental/marina1.csv",
+# output: "output/datasets/environmental/marina2.csv",
+# output: "output/datasets/environmental/tugwell1.csv",
+# output: "output/datasets/environmental/tugwell2.csv",
+# output: "output/datasets/environmental/Baleine.csv",
+# output: "output/datasets/environmental/NE.csv",
+# output: "output/datasets/environmental/Pilotes.csv",
+# output: "output/datasets/environmental/SW.csv"
