@@ -1,29 +1,27 @@
 # ===============================================================================
-# Name   	: Generate Current Plots
+# Name   	: Generate Plots
 # Author 	: Jillian Shao
 # Date   	:  [dd-mm-yyyy] 23-02-2025
 # Version	: 1
 # URL		:
 # Aim    	:
 # Input   : Dataframe data, vector of Strings var_vec,
-#           vector of Strings name_vec, String save_loc
+#           vector of Strings name_vec, vector of Strings y_vec, String save_loc
 # Output  : Plots saved to "./R_output/plots/"
 # ===============================================================================
 
-generate.current.plots <- function(data, var_vec, name_vec, save_loc) {
+generate.plots <- function(data, var_vec, name_vec, y_vec, save_loc) {
   require(ggplot2)
 
   for (i in 1:length(var_vec)) {
     data %>%
       ggplot(aes(x = DateTime)) +
-      geom_point(aes(y = Speed, color = Heading), alpha = 0.1, shape = 16) +
-      geom_point(aes(y = !!sym(var_vec[i])), color = "black", alpha = 0.1, shape = 16) +
-      labs(title = name_vec[i], x = '', y = "Current speed (cm/s)") +
+      geom_path(aes(y = !!sym(var_vec[i]), color = Position)) +
+      labs(title = name_vec[i], x = '', y = y_vec[i]) +
       theme_bw() +
-      scale_color_gradientn(colours = terrain.colors(16)) +
+      scale_color_brewer(palette = "Dark2") +
       facet_wrap(~Site)
 
     ggsave(filename = paste(save_loc, name_vec[i], sep = '/'))
   }
-
 }

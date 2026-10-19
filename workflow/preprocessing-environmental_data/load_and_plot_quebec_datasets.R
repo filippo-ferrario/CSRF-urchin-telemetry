@@ -10,7 +10,7 @@
 
 #### For Quebec ####
 # Load TCM data
-source(here("workflow/preprocessing-environmental_data/load-TCM.R"))
+source(here("workflow/preprocessing-environmental_data/function-load-TCM.R"))
 # TCM current data
 temp1 <- load.tcm.data(
   here("data/raw_data_downloads_bic_2022/"),
@@ -38,13 +38,17 @@ temp2 <- load.tcm.data(
 TCM_temp <- rbind(temp1, temp2)
 
 # Load StarOddi data
-source(here("workflow/preprocessing-environmental_data/load-staroddi.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-load-staroddi.R"
+))
 temp1 <- load.star.data(here("data/raw_data_downloads_bic_2022/"))
 temp2 <- load.star.data(here("data/raw_data_downloads_cacouna_2022/"))
 star <- rbind(temp1, temp2)
 
 # Load AquaMeasure data
-source(here("workflow/preprocessing-environmental_data/load-aquameasure.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-load-aquameasure.R"
+))
 temp1 <- load.aqua.data(
   here("data/raw_data_downloads_bic_2022/"),
   c(
@@ -82,7 +86,9 @@ aqua$Serial <- as.character(aqua$Serial)
 metadata <- read.csv(here("data/metadata_sensors_QC2022.csv"), sep = ";")
 
 # Initial clean - merge with metadata, lubridate date/time, exclude deployment/recovery date/times
-source(here("workflow/preprocessing-environmental_data/clean-environmental.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-clean-environmental.R"
+))
 TCM_current <- initial.clean(TCM_current, metadata, year = 2023)
 TCM_temp <- initial.clean(TCM_temp, metadata, year = 2023)
 aqua <- initial.clean(aqua, metadata, by.x = "Serial", year = 2023)
@@ -90,7 +96,7 @@ star <- initial.clean(star, metadata, star = TRUE, year = 2023)
 
 # Calculate moving averages
 source(here(
-  "workflow/preprocessing-environmental_data/calculate-moving-averages.R"
+  "workflow/preprocessing-environmental_data/function-calculate-moving-averages.R"
 ))
 TCM_current <- calculate.moving.avg(TCM_current, 'tcm-current')
 TCM_temp <- calculate.moving.avg(
@@ -103,11 +109,12 @@ aqua <- calculate.moving.avg(aqua, 'aquameasure')
 star <- calculate.moving.avg(star, 'staroddi')
 
 ### Quebec Plots ####
-
 # Generate plots and save to 'output/plots/'
-source(here("workflow/preprocessing-environmental_data/generate-plots.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-generate-plots.R"
+))
 generate.plots(
-  TCM_temp2,
+  TCM_temp,
   var_vec = c("temp_ma01", "temp_ma02", "temp_ma03", "temp_ma04"),
   name_vec = c(
     "QC_TCMTemp_rollmean_30mins.png",
@@ -124,7 +131,7 @@ generate.plots(
   save_loc = here("output/plots/")
 )
 generate.plots(
-  aqua2,
+  aqua,
   var_vec = c(
     "temp_ma01",
     "temp_ma02",
@@ -158,7 +165,7 @@ generate.plots(
   save_loc = here("output/plots/")
 )
 generate.plots(
-  star2,
+  star,
   var_vec = c(
     "temp_ma01",
     "temp_ma02",
@@ -192,10 +199,12 @@ generate.plots(
   save_loc = here("output/plots/")
 )
 
-source(here("workflow/preprocessing-environmental_data/generate-plots-zoom.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-generate-plots-zoom.R"
+))
 # One Week Zoom
 generate.plots.zoom(
-  TCM_temp2,
+  TCM_temp,
   origvar_vec = c("Temperature", "Temperature", "Temperature"),
   roundvar_vec = c("temp_ma02", "temp_ma03", "temp_ma04"),
   name_vec = c(
@@ -208,7 +217,7 @@ generate.plots.zoom(
   save_loc = here("output/plots/")
 )
 generate.plots.zoom(
-  aqua2,
+  aqua,
   origvar_vec = c("Temp", "Temp", "Temp", "Sal", "Sal", "Sal"),
   roundvar_vec = c(
     "temp_ma02",
@@ -238,7 +247,7 @@ generate.plots.zoom(
   save_loc = here("output/plots/")
 )
 generate.plots.zoom(
-  star2,
+  star,
   origvar_vec = c("Temp", "Temp", "Temp", "Sal", "Sal", "Sal"),
   roundvar_vec = c(
     "temp_ma02",
@@ -270,7 +279,7 @@ generate.plots.zoom(
 
 # Two Day Zoom
 generate.plots.zoom(
-  TCM_temp2,
+  TCM_temp,
   origvar_vec = c("Temperature", "Temperature", "Temperature"),
   roundvar_vec = c("temp_ma02", "temp_ma03", "temp_ma04"),
   name_vec = c(
@@ -283,7 +292,7 @@ generate.plots.zoom(
   save_loc = here("output/plots/")
 )
 generate.plots.zoom(
-  aqua2,
+  aqua,
   origvar_vec = c("Temp", "Temp", "Temp", "Sal", "Sal", "Sal"),
   roundvar_vec = c(
     "temp_ma02",
@@ -313,7 +322,7 @@ generate.plots.zoom(
   save_loc = here("output/plots/")
 )
 generate.plots.zoom(
-  star2,
+  star,
   origvar_vec = c("Temp", "Temp", "Temp", "Sal", "Sal", "Sal"),
   roundvar_vec = c(
     "temp_ma02",
@@ -345,10 +354,10 @@ generate.plots.zoom(
 
 
 source(here(
-  "workflow/preprocessing-environmental_data/generate-current-plots.R"
+  "workflow/preprocessing-environmental_data/function-generate-current-plots.R"
 ))
 generate.current.plots(
-  TCM_current2,
+  TCM_current,
   var_vec = c("speed_ma01", "speed_ma02", "speed_ma03", "speed_ma04"),
   name_vec = c(
     "QC_TCMCurr_rollmean_30mins.png",
@@ -360,10 +369,10 @@ generate.current.plots(
 )
 
 source(here(
-  "workflow/preprocessing-environmental_data/generate-current-plots-zoom.R"
+  "workflow/preprocessing-environmental_data/function-generate-current-plots-zoom.R"
 ))
 generate.current.plots.zoom(
-  TCM_current2,
+  TCM_current,
   roundvar_vec = c("speed_ma02", "speed_ma03", "speed_ma04"),
   name_vec = c(
     "QC_TCMCurr_rollmean_2hours_week.png",
@@ -374,7 +383,7 @@ generate.current.plots.zoom(
   save_loc = here("output/plots/")
 )
 generate.current.plots.zoom(
-  TCM_current2,
+  TCM_current,
   roundvar_vec = c("speed_ma02", "speed_ma03", "speed_ma04"),
   name_vec = c(
     "QC_TCMCurr_rollmean_2hours_2days.png",

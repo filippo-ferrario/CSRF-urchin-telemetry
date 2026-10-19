@@ -13,8 +13,13 @@
 load.star.data <- function(folder) {
   require(tibble)
 
-  temp <- list.files(path = folder, pattern = "\\_exported.csv", recursive = TRUE,
-                     ignore.case = TRUE, full.names = TRUE)
+  temp <- list.files(
+    path = folder,
+    pattern = "\\_exported.csv",
+    recursive = TRUE,
+    ignore.case = TRUE,
+    full.names = TRUE
+  )
 
   # Exclude paths that include "/Archive/" or end with "/Archive"
   temp <- temp[!grepl("/Archive(/|$)", temp)]
@@ -36,7 +41,15 @@ load.star.data <- function(folder) {
       myfiles[[i]] <- myfiles[[i]] %>%
         add_column(depth = NA, .after = "Temp(\xb0C)")
     }
-    colnames(myfiles[[i]]) <- c("Time", "Temp", "Depth", "Sal", "Conduct", "Vel_sound", "Sensor")
+    colnames(myfiles[[i]]) <- c(
+      "Time",
+      "Temp",
+      "Depth",
+      "Sal",
+      "Conduct",
+      "Vel_sound",
+      "Sensor"
+    )
   }
 
   star <- as_tibble(bind_rows(myfiles))
@@ -55,7 +68,3 @@ load.star.data <- function(folder) {
 
   return(star)
 }
-
-
-
-
