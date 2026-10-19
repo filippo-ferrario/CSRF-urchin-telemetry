@@ -4,8 +4,8 @@
 # Date   	:  [dd-mm-yyyy] 14-11-2025
 # Version	: 1
 # URL		:
-# Aim    	: To create CSV files of environmental data - ONLY NEED TO RUN SECTION
-#           #### Final Environmental Datasets
+# Aim    	: Load and save preliminary investigative plots for Quebec
+#           environmental datasets for 2022
 # ===============================================================================
 
 #### For Quebec ####
