@@ -28,8 +28,6 @@ library(ezknitr)
 # Import Quebec data and preliminary plots for investigation
 # =========================
 
-# Import
-# -------------------------
 # input: data/raw_data_downloads_bic_2022/
 # input: data/raw_data_downloads_cacouna_2022/
 # input: data/metadata_sensors_QC2022.csv
@@ -97,3 +95,63 @@ source(
 # output: "output/plots/QC_TCMTemp_rollmean_6hours.png"
 # output: "output/plots/QC_TCMTemp_rollmean_6hours_2days.png"
 # output: "output/plots/QC_TCMTemp_rollmean_6hours_week.png"
+
+# =========================
+# Import BC data and preliminary plots for investigation
+# =========================
+
+# input: data/raw_data_downloads_prince_rupert_2023/
+# input: data/raw_data_downloads_quadra_2023/
+# input: data/metadata_sensors_BC2023.csv
+source(
+  "./workflow/preprocessing-environmental_data/load_and_plot_bc_datasets.R"
+)
+
+# output: "output/plots/BC_AquaSal_rollmean_2hours.png"
+# output: "output/plots/BC_AquaSal_rollmean_2hours_2days.png"
+# output: "output/plots/BC_AquaSal_rollmean_2hours_week.png"
+# output: "output/plots/BC_AquaSal_rollmean_3hours.png"
+# output: "output/plots/BC_AquaSal_rollmean_3hours_2days.png"
+# output: "output/plots/BC_AquaSal_rollmean_3hours_week.png"
+# output: "output/plots/BC_AquaSal_rollmean_6hours.png"
+# output: "output/plots/BC_AquaSal_rollmean_6hours_2days.png"
+# output: "output/plots/BC_AquaSal_rollmean_6hours_week.png"
+# output: "output/plots/BC_AquaSal_rollmean_30mins.png"
+# output: "output/plots/BC_AquaTemp_rollmean_2hours.png"
+# output: "output/plots/BC_AquaTemp_rollmean_2hours_2days.png"
+# output: "output/plots/BC_AquaTemp_rollmean_2hours_week.png"
+# output: "output/plots/BC_AquaTemp_rollmean_3hours.png"
+# output: "output/plots/BC_AquaTemp_rollmean_3hours_2days.png"
+# output: "output/plots/BC_AquaTemp_rollmean_3hours_week.png"
+# output: "output/plots/BC_AquaTemp_rollmean_6hours.png"
+# output: "output/plots/BC_AquaTemp_rollmean_6hours_2days.png"
+# output: "output/plots/BC_AquaTemp_rollmean_6hours_week.png"
+# output: "output/plots/BC_AquaTemp_rollmean_30mins.png"
+# output: "output/plots/BC_StarSal_rollmean_2hours.png"
+# output: "output/plots/BC_StarSal_rollmean_2hours_2days.png"
+# output: "output/plots/BC_StarSal_rollmean_2hours_week.png"
+# output: "output/plots/BC_StarSal_rollmean_3hours.png"
+# output: "output/plots/BC_StarSal_rollmean_3hours_2days.png"
+# output: "output/plots/BC_StarSal_rollmean_3hours_week.png"
+# output: "output/plots/BC_StarSal_rollmean_6hours.png"
+# output: "output/plots/BC_StarSal_rollmean_6hours_2days.png"
+# output: "output/plots/BC_StarSal_rollmean_6hours_week.png"
+# output: "output/plots/BC_StarSal_rollmean_30mins.png"
+# output: "output/plots/BC_StarTemp_rollmean_2hours.png"
+# output: "output/plots/BC_StarTemp_rollmean_2hours_2days.png"
+# output: "output/plots/BC_StarTemp_rollmean_2hours_week.png"
+# output: "output/plots/BC_StarTemp_rollmean_3hours.png"
+# output: "output/plots/BC_StarTemp_rollmean_3hours_2days.png"
+# output: "output/plots/BC_StarTemp_rollmean_3hours_week.png"
+# output: "output/plots/BC_StarTemp_rollmean_6hours.png"
+# output: "output/plots/BC_StarTemp_rollmean_6hours_2days.png"
+# output: "output/plots/BC_StarTemp_rollmean_6hours_week.png"
+# output: "output/plots/BC_StarTemp_rollmean_30mins.png"
+# output: "output/plots/BC_TCMCurr_rollmean_2hours.png"
+# output: "output/plots/BC_TCMCurr_rollmean_2hours_2days.png"
+# output: "output/plots/BC_TCMCurr_rollmean_2hours_week.png"
+# output: "output/plots/BC_TCMCurr_rollmean_3hours.png"
+# output: "output/plots/BC_TCMCurr_rollmean_3hours_2days.png"
+# output: "output/plots/BC_TCMCurr_rollmean_3hours_week.png"
+# output: "output/plots/BC_TCMCurr_rollmean_6hours.png"
+# output: "output/plots/BC_TCMCurr_rollmean_6hours_2days.png"

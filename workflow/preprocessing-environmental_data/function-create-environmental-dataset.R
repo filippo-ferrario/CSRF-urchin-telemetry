@@ -13,7 +13,9 @@
 # Function to create environmental dataset (other than current)
 create_envdataset <- function(data) {
   # Load AquaMeasure data
-  source(here("workflow/preprocessing-environmental_data/load-aquameasure.R"))
+  source(here(
+    "workflow/preprocessing-environmental_data/function-load-aquameasure.R"
+  ))
   temp1 <- load.aqua.data(
     here(data[1]),
     c(
@@ -45,7 +47,7 @@ create_envdataset <- function(data) {
     )
   )
   # Load TCM temp data
-  source(here("workflow/preprocessing-environmental_data/load-TCM.R"))
+  source(here("workflow/preprocessing-environmental_data/function-load-TCM.R"))
   temp3 <- load.tcm.data(
     here(data[1]),
     "\\_Temperature.csv",
@@ -66,7 +68,7 @@ create_envdataset <- function(data) {
 
   # Initial clean (merge with metadata, lubridate date/time, exclude based on deployment/recovery time)
   source(here(
-    "workflow/preprocessing-environmental_data/clean-environmental.R"
+    "workflow/preprocessing-environmental_data/function-clean-environmental.R"
   ))
   salinity$Serial <- as.character(salinity$Serial)
   temperature$Serial <- as.character(temperature$Serial)

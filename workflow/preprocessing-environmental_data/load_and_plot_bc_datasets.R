@@ -10,7 +10,7 @@
 
 #### For British Columbia ####
 # Load TCM data
-source(here("workflow/preprocessing-environmental_data/load-TCM.R"))
+source(here("workflow/preprocessing-environmental_data/function-load-TCM.R"))
 # TCM current data
 temp1 <- load.tcm.data(
   here("data/raw_data_downloads_prince_rupert_2023/"),
@@ -22,7 +22,7 @@ temp2 <- load.tcm.data(
   "\\_Current.csv",
   c("Time", "Speed", "Heading", "V_N", "V_E", "Sensor", "Serial")
 )
-TCM_current_bc <- rbind(temp1, temp2)
+TCM_current <- rbind(temp1, temp2)
 
 # TCM temperature data
 temp1 <- load.tcm.data(
@@ -35,16 +35,20 @@ temp2 <- load.tcm.data(
   "\\_Temperature.csv",
   c("Time", "Temperature", "Sensor", "Serial")
 )
-TCM_temp_bc <- rbind(temp1, temp2)
+TCM_temp <- rbind(temp1, temp2)
 
 # Load StarOddi data
-source(here("workflow/preprocessing-environmental_data/load-staroddi.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-load-staroddi.R"
+))
 temp1 <- load.star.data(here("data/raw_data_downloads_prince_rupert_2023/"))
 temp2 <- load.star.data(here("data/raw_data_downloads_quadra_2023/"))
-star_bc <- rbind(temp1, temp2)
+star <- rbind(temp1, temp2)
 
 # Load AquaMeasure data
-source(here("workflow/preprocessing-environmental_data/load-aquameasure.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-load-aquameasure.R"
+))
 temp1 <- load.aqua.data(
   here("data/raw_data_downloads_prince_rupert_2023/"),
   c(
@@ -75,37 +79,41 @@ temp2 <- load.aqua.data(
     "Details"
   )
 )
-aqua_bc <- rbind(temp1, temp2)
-aqua_bc$Serial <- as.character(aqua_bc$Serial)
+aqua <- rbind(temp1, temp2)
+aqua$Serial <- as.character(aqua$Serial)
 
 # Load metadata
 metadata <- read.csv(here("data/metadata_sensors_BC2023.csv"), sep = ";")
 
 # Initial clean - merge with metadata, lubridate date/time, exclude deployment/recovery date/times
-source(here("workflow/preprocessing-environmental_data/clean-environmental.R"))
-TCM_current_bc <- initial.clean(TCM_current_bc, metadata, year = 2023)
-TCM_temp_bc <- initial.clean(TCM_temp_bc, metadata, year = 2023)
-aqua_bc <- initial.clean(aqua_bc, metadata, by.x = "Serial", year = 2023)
-star_bc <- initial.clean(star_bc, metadata, star = TRUE, year = 2023)
+source(here(
+  "workflow/preprocessing-environmental_data/function-clean-environmental.R"
+))
+TCM_current <- initial.clean(TCM_current, metadata, year = 2023)
+TCM_temp <- initial.clean(TCM_temp, metadata, year = 2023)
+aqua <- initial.clean(aqua, metadata, by.x = "Serial", year = 2023)
+star <- initial.clean(star, metadata, star = TRUE, year = 2023)
 
 # Calculate moving averages
 source(here(
-  "workflow/preprocessing-environmental_data/calculate-moving-averages.R"
+  "workflow/preprocessing-environmental_data/function-calculate-moving-averages.R"
 ))
-TCM_current_bc <- calculate.moving.avg(TCM_current_bc, 'tcm-current')
-TCM_temp_bc <- calculate.moving.avg(
-  TCM_temp_bc,
+TCM_current <- calculate.moving.avg(TCM_current, 'tcm-current')
+TCM_temp <- calculate.moving.avg(
+  TCM_temp,
   'tcm-temperature',
   site_col = "Site",
   sensor_col = "Sensor"
 )
-aqua_bc <- calculate.moving.avg(aqua_bc, 'aquameasure')
-star_bc <- calculate.moving.avg(star_bc, 'staroddi')
+aqua <- calculate.moving.avg(aqua, 'aquameasure')
+star <- calculate.moving.avg(star, 'staroddi')
 
 ### BC Plots ####
 
 # Generate plots and save to 'output/plots/'
-source(here("workflow/preprocessing-environmental_data/generate-plots.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-generate-plots.R"
+))
 generate.plots(
   TCM_temp,
   var_vec = c("temp_ma01", "temp_ma02", "temp_ma03", "temp_ma04"),
@@ -192,7 +200,9 @@ generate.plots(
   save_loc = here("output/plots/")
 )
 
-source(here("workflow/preprocessing-environmental_data/generate-plots-zoom.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-generate-plots-zoom.R"
+))
 # One Week Zoom
 generate.plots.zoom(
   TCM_temp,
@@ -345,7 +355,7 @@ generate.plots.zoom(
 
 
 source(here(
-  "workflow/preprocessing-environmental_data/generate-current-plots.R"
+  "workflow/preprocessing-environmental_data/function-generate-current-plots.R"
 ))
 generate.current.plots(
   TCM_current,
@@ -360,7 +370,7 @@ generate.current.plots(
 )
 
 source(here(
-  "workflow/preprocessing-environmental_data/generate-current-plots-zoom.R"
+  "workflow/preprocessing-environmental_data/function-generate-current-plots-zoom.R"
 ))
 generate.current.plots.zoom(
   TCM_current,
