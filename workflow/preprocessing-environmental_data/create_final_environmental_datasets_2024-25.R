@@ -17,24 +17,26 @@ library(ggplot2)
 
 #### 2024/25 TCM and AM data ####
 # Load TCM data
-source(here("workflow/preprocessing-environmental_data/load-TCM.R"))
+source(here("workflow/preprocessing-environmental_data/function-load-TCM.R"))
 # TCM current data
 tcm_curr_2425 <- load.tcm.data(
-  here("data/2024-25/TCM - current meter/"),
+  here("data/2024-25 CSRF/data/TCM - current meter/"),
   "\\_Current.csv",
   c("Time", "Speed", "Heading", "V_N", "V_E", "Serial", "Sensor"),
   rewrite_sensor = TRUE
 )
 tcm_temp_2425 <- load.tcm.data(
-  here("data/2024-25/TCM - current meter/"),
+  here("data/2024-25 CSRF/data/TCM - current meter/"),
   "\\_Temperature.csv",
   c("Time", "Temperature", "Sensor", "Serial"),
   rewrite_sensor = TRUE
 )
 # Load AquaMeasure data
-source(here("workflow/preprocessing-environmental_data/load-aquameasure.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-load-aquameasure.R"
+))
 am_2425 <- load.aqua.data(
-  here("data/2024-25/Aquameasure"),
+  here("data/2024-25 CSRF/data/Aquameasure"),
   c(
     "No",
     "Time",
@@ -57,13 +59,15 @@ am_temp <- am_2425[am_2425$Record_Type == "Temperature", ] %>% select(-Salinity)
 
 # Load metadata
 metadata <- read.table(
-  here("data/2024-25/metadata_reorg.csv"),
+  here("data/2024-25 CSRF/data/metadata_reorg.csv"),
   header = TRUE,
   sep = ","
 )
 
 # Initial clean - merge with metadata, lubridate date/time, exclude deployment/recovery date/times
-source(here("workflow/preprocessing-environmental_data/clean-environmental.R"))
+source(here(
+  "workflow/preprocessing-environmental_data/function-clean-environmental.R"
+))
 tcm_curr_2425 <- initial.clean(
   data = tcm_curr_2425,
   metadata,
@@ -191,14 +195,14 @@ tcm_curr$rock <- tcm_curr$rock %>%
 
 # Average same datetime rows and calculate moving average
 source(here(
-  "workflow/preprocessing-environmental_data/create-environmental-dataset.R"
+  "workflow/preprocessing-environmental_data/function-create-environmental-dataset.R"
 ))
 alltemp_avg <- lapply(alltemp, average_samedt, col_name = "Temperature")
 am_sal_avg <- lapply(am_sal, average_samedt, col_name = "Salinity")
 
 # Rolling mean of current
 source(here(
-  "workflow/preprocessing-environmental_data/create-current-dataset.R"
+  "workflow/preprocessing-environmental_data/function-create-current-dataset.R"
 ))
 tcm_curr_avg <- rollmean_current(tcm_curr)
 
@@ -229,7 +233,7 @@ cols_to_keep <- c(
 )
 
 source(here(
-  "workflow/preprocessing-environmental_data/save-environmental-csv.R"
+  "workflow/preprocessing-environmental_data/function-save-environmental-csv.R"
 ))
 combined <- create_site_csv(
   curr = tcm_curr_avg,
@@ -239,6 +243,32 @@ combined <- create_site_csv(
   lat_col = "lat",
   long_col = "lon",
   serial_col = "Sensor"
+)
+
+source(here(
+  "workflow/preprocessing-environmental_data/function-generate-trend-plots.R"
+))
+plot_current_trends(
+  tcm_curr_avg,
+  serial_col = "Sensor",
+  file_prefix = "TCM_current_2024-25_",
+  out_dir = "output/plots/trend/24-25"
+)
+plot_env_trends(
+  am_sal_avg,
+  serial_col = "Sensor",
+  file_prefix = "Aquameasure_sal_2024-25_",
+  variable = "salinity",
+  value_col = "rollmean_Salinity",
+  out_dir = "output/plots/trend/24-25"
+)
+plot_env_trends(
+  alltemp_avg,
+  serial_col = "Sensor",
+  file_prefix = "TCM-Aquameasure_temp_2024-25_",
+  variable = "temperature",
+  value_col = "rollmean_Temperature",
+  out_dir = "output/plots/trend/24-25"
 )
 
 # Plots

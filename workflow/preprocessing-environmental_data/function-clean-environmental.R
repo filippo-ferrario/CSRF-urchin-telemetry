@@ -66,7 +66,7 @@ initial.clean <- function(
       ) %>%
       filter(
         lubridate::as_datetime(Time) <
-          lubridate::ymd_hm(DateTime_recovered) - days(1)
+          lubridate::as_datetime(DateTime_recovered) - days(1)
       )
   }
 

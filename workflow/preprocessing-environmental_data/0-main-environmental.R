@@ -236,3 +236,74 @@ source(
 # output: "output/plots/trend/BC_temp_marina1.html"
 # output: "output/plots/trend/BC_temp_marina2.html"
 # output: "output/plots/trend/BC_temp_tugwell1.html"
+
+# =========================
+# Create final environmental datasets for 2024-25 CSRF
+# =========================
+# The folder structure is following if the '2024-25 CSRF' folder shared by
+# Filippo Ferrario originally on OneDrive -> downloaded and moved to SharePoint
+# by Jillian Shao. All are original files except for metadata_reorg.csv
+# which is a reorganized version of the sheet 'wpt transect adn sensors' in
+# 20250325_26-deployment_receivers.xlsx that is more R readable
+# 2024-25 CSRF/
+# - data/
+#   - Aquameasure/
+#   - Dive logs/
+#   - Photos terrain/
+#   - pics field data sheets/
+#   - Receiver Logs/
+#   - TCM - current meter/
+#   - Video transect/
+#   - 20250325_26-deployment_receivers.xlsx
+#   - 20250325_26-receivers deployment.csv
+#   - 20250325_26-wpt transect and sensors.csv
+#   - drift_dissection.xlsx
+#   - drift_dives.csv
+#   - drift_dives.xlsx
+#   - empty_space.xlsx
+#   - gps_receivers-20240917.csv
+#   - metadata_reorg.csv
+#   - receivers-geode-Cacouna sable et roche.csv
+#   - sediment_cores.xlsx
+#   - Tagging_Telemetry_Urchins2025.xlsx
+#   - transects.xlsx
+
+# input: data/2024-25 CSRF/ Aquameasure/
+# input: data/2024-25 CSRF/TCM - current meter/
+# input: data/2024-25 CSRF/metadata_reorg.csv
+source(
+  "./workflow/preprocessing-environmental_data/create_final_environmental_datasets_2024-25.R"
+)
+
+# Dataset outputs
+# output: "output/datasets/environmental/sand.csv",
+# output: "output/datasets/environmental/drift-1.csv",
+# output: "output/datasets/environmental/drift-2.csv",
+# output: "output/datasets/environmental/rock.csv"
+# Plotting outputs
+c(
+  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_sand.html",
+  "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-1_files",
+  "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-2_files",
+  "output/plots/trend/24-25/Aquameasure_sal_2024-25_rock_files",
+  "output/plots/trend/24-25/Aquameasure_sal_2024-25_sand_files",
+  "output/plots/trend/24-25/TCM_current_2024-25_drift-1_files",
+  "output/plots/trend/24-25/TCM_current_2024-25_drift-2_files",
+  "output/plots/trend/24-25/TCM_current_2024-25_rock_files",
+  "output/plots/trend/24-25/TCM_current_2024-25_sand_files",
+  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-1_files",
+  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-2_files",
+  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_rock_files",
+  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_sand_files",
+  "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-1.html",
+  "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-2.html",
+  "output/plots/trend/24-25/Aquameasure_sal_2024-25_rock.html",
+  "output/plots/trend/24-25/Aquameasure_sal_2024-25_sand.html",
+  "output/plots/trend/24-25/TCM_current_2024-25_drift-1.html",
+  "output/plots/trend/24-25/TCM_current_2024-25_drift-2.html",
+  "output/plots/trend/24-25/TCM_current_2024-25_rock.html",
+  "output/plots/trend/24-25/TCM_current_2024-25_sand.html",
+  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-1.html",
+  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-2.html",
+  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_rock.html"
+)
