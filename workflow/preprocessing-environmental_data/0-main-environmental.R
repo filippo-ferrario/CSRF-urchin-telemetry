@@ -276,34 +276,32 @@ source(
 )
 
 # Dataset outputs
-# output: "output/datasets/environmental/sand.csv",
-# output: "output/datasets/environmental/drift-1.csv",
-# output: "output/datasets/environmental/drift-2.csv",
+# output: "output/datasets/environmental/sand.csv"
+# output: "output/datasets/environmental/drift-1.csv"
+# output: "output/datasets/environmental/drift-2.csv"
 # output: "output/datasets/environmental/rock.csv"
 # Plotting outputs
-c(
-  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_sand.html",
-  "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-1_files",
-  "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-2_files",
-  "output/plots/trend/24-25/Aquameasure_sal_2024-25_rock_files",
-  "output/plots/trend/24-25/Aquameasure_sal_2024-25_sand_files",
-  "output/plots/trend/24-25/TCM_current_2024-25_drift-1_files",
-  "output/plots/trend/24-25/TCM_current_2024-25_drift-2_files",
-  "output/plots/trend/24-25/TCM_current_2024-25_rock_files",
-  "output/plots/trend/24-25/TCM_current_2024-25_sand_files",
-  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-1_files",
-  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-2_files",
-  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_rock_files",
-  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_sand_files",
-  "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-1.html",
-  "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-2.html",
-  "output/plots/trend/24-25/Aquameasure_sal_2024-25_rock.html",
-  "output/plots/trend/24-25/Aquameasure_sal_2024-25_sand.html",
-  "output/plots/trend/24-25/TCM_current_2024-25_drift-1.html",
-  "output/plots/trend/24-25/TCM_current_2024-25_drift-2.html",
-  "output/plots/trend/24-25/TCM_current_2024-25_rock.html",
-  "output/plots/trend/24-25/TCM_current_2024-25_sand.html",
-  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-1.html",
-  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-2.html",
-  "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_rock.html"
-)
+# output: "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_sand.html"
+# output: "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-1_files"
+# output: "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-2_files"
+# output: "output/plots/trend/24-25/Aquameasure_sal_2024-25_rock_files"
+# output: "output/plots/trend/24-25/Aquameasure_sal_2024-25_sand_files"
+# output: "output/plots/trend/24-25/TCM_current_2024-25_drift-1_files"
+# output: "output/plots/trend/24-25/TCM_current_2024-25_drift-2_files"
+# output: "output/plots/trend/24-25/TCM_current_2024-25_rock_files"
+# output: "output/plots/trend/24-25/TCM_current_2024-25_sand_files"
+# output: "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-1_files"
+# output: "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-2_files"
+# output: "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_rock_files"
+# output: "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_sand_files"
+# output: "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-1.html"
+# output: "output/plots/trend/24-25/Aquameasure_sal_2024-25_drift-2.html"
+# output: "output/plots/trend/24-25/Aquameasure_sal_2024-25_rock.html"
+# output: "output/plots/trend/24-25/Aquameasure_sal_2024-25_sand.html"
+# output: "output/plots/trend/24-25/TCM_current_2024-25_drift-1.html"
+# output: "output/plots/trend/24-25/TCM_current_2024-25_drift-2.html"
+# output: "output/plots/trend/24-25/TCM_current_2024-25_rock.html"
+# output: "output/plots/trend/24-25/TCM_current_2024-25_sand.html"
+# output: "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-1.html"
+# output: "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_drift-2.html"
+# output: "output/plots/trend/24-25/TCM-Aquameasure_temp_2024-25_rock.html"
